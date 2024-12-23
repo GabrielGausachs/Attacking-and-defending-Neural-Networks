@@ -19,13 +19,14 @@ DO_DEFENSE = False
 # -----------------------------------------
 
 LOG_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Logs")
-IMAGE_PATH = ""
+IMAGE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))),"")
 
 # -----------------------------------------
 # Parameters 
 # -----------------------------------------
 
-
+BATCH_SIZE_ATTACK = 1
+NUM_WORKERS = 2
 
 DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 #DEVICE = torch.device("cpu")
