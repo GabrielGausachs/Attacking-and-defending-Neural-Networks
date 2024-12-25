@@ -5,13 +5,14 @@ import tarfile
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 from Utils.logger import initialize_logger, get_logger
+from Utils.dataset import CustomDataset
 
 from Utils.config import (
     IMAGE_PATH,
     BATCH_SIZE_ATTACK,
-    NUM_WORKERS
+    NUM_WORKERS,
+    LABEL_PATH,
 )
-
 
 
 logger = get_logger()
@@ -23,6 +24,7 @@ class CustomDataloader:
         self.batch_size_attack = BATCH_SIZE_ATTACK
         self.num_workers = NUM_WORKERS
         self.images_path = IMAGE_PATH
+        self.labels_path = LABEL_PATH
 
 
     def create_dataloaders(self):
@@ -38,7 +40,7 @@ class CustomDataloader:
         logger.info("-" * 50)
         logger.info('Creating dataset...')
 
-        dataset = datasets.ImageFolder(root=self.images_path)
+        dataset = CustomDataset(self.images_path,self.labels_path)
 
         # Create DataLoader
         logger.info("-" * 50)

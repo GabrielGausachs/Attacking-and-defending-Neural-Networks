@@ -22,6 +22,7 @@ ATTACK_NAME = "ifgsm"
 
 LOG_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Logs")
 IMAGE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))),"ILSVRC2012_img_val")
+LABEL_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))),"val")
 
 # -----------------------------------------
 # Parameters 
