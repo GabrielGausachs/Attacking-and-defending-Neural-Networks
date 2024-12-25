@@ -6,7 +6,8 @@ from torchvision import models
 from Utils import (
     logger,
     dataloader,
-    attacking
+    attacking,
+    visualize,
 )
 
 from Utils.config import (
@@ -48,7 +49,7 @@ if __name__ == "__main__":
     logger.info("Model loaded")
 
     # Load the data
-    testloader = dataloader.CustomDataloader().create_dataloaders()
+    val_loader = dataloader.CustomDataloader().create_dataloaders()
     logger.info("-" * 50)
     logger.info("Data loaded")
 
@@ -60,13 +61,15 @@ if __name__ == "__main__":
         # Create a criterion object
         criterion = criterion[CRITERION]
 
-        for i, (image, label) in enumerate(testloader):
+        for i, (image, label) in enumerate(val_loader):
+            print(label)
 
             if ATTACK_NAME == 'ifgsm':
                 logger.info("Attacking using I-FGSM")
                 logger.info(f"epsilon: {EPSILON}, stepsize: {STEPSIZE}, num_iter: {NUM_ITERATIONS}")
                 # Attacking with I-FGSM
-                adversial_image = attacking.I_FGM_attack(model,image,label,criterion,EPSILON,STEPSIZE,NUM_ITERATIONS)
+                adversial_image, pred_label = attacking.I_FGM_attack(model,image,label,criterion,EPSILON,STEPSIZE,NUM_ITERATIONS)
+                visualize.plot_images(image,adversial_image,label,pred_label)
 
             if i >= IMAGES_TO_TEST:
                 break

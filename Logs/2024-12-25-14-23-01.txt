@@ -1,0 +1,18 @@
+2024-12-25 14:23:01,998 - root - INFO -> Logger initialized in filename 2024-12-25-14-23-01
+2024-12-25 14:23:01,998 - root - INFO -> --------------------------------------------------
+2024-12-25 14:23:01,998 - root - INFO -> Executing main
+2024-12-25 14:23:02,303 - root - INFO -> --------------------------------------------------
+2024-12-25 14:23:02,323 - root - INFO -> Model loaded
+2024-12-25 14:23:02,323 - root - INFO -> --------------------------------------------------
+2024-12-25 14:23:02,323 - root - INFO -> Reading the data from c:\Users\g4a4b\OneDrive - University of Twente\MasterCS\Deep Learning\ILSVRC2012_img_val...
+2024-12-25 14:23:02,323 - root - INFO -> --------------------------------------------------
+2024-12-25 14:23:02,323 - root - INFO -> Creating dataset...
+2024-12-25 14:23:02,710 - root - INFO -> --------------------------------------------------
+2024-12-25 14:23:02,710 - root - INFO -> Creating dataloader...
+2024-12-25 14:23:02,710 - root - INFO -> Val loader info: {'Number of samples': 50000, 'Batch size': 1, 'Number of batches': 50000}
+2024-12-25 14:23:02,710 - root - INFO -> --------------------------------------------------
+2024-12-25 14:23:02,710 - root - INFO -> Data loaded
+2024-12-25 14:23:02,710 - root - INFO -> --------------------------------------------------
+2024-12-25 14:23:02,710 - root - INFO -> Start attacking
+2024-12-25 14:23:15,247 - root - INFO -> Attacking using I-FGSM
+2024-12-25 14:23:15,247 - root - INFO -> epsilon: 7.65, stepsize: 2.55, num_iter: 10

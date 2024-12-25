@@ -5,15 +5,17 @@ import torch
 import os
 from PIL import Image
 import xml.etree.ElementTree as ET
+import torchvision.transforms as transforms
 
 logger = get_logger()
 
 
 class CustomDataset(Dataset):
-    def __init__(self,images_path,labels_path):
+    def __init__(self,images_path,labels_path,transform=None):
 
         self.images_dir = images_path
         self.labels_dir = labels_path
+        self.transform = transform
 
         self.image_files = sorted(os.listdir(images_path))
         self.label_files = sorted(os.listdir(labels_path))
@@ -28,17 +30,21 @@ class CustomDataset(Dataset):
 
         # Load label
         label_path = os.path.join(self.labels_dir, self.label_files[index])
-        label = self.parse_xml_label(label_path)
+        label = self.get_label_from_xml(label_path)
+
+        # Transform the image if it is necessary
+        if self.transform:
+            image = self.transform(image)
 
         return image,label
 
-    def get_label_from_xml(xml_file):
+    def get_label_from_xml(self,xml_file):
         #Parses an XML file to extract the label(s).
 
         tree = ET.parse(xml_file)
         root = tree.getroot()
 
         # Extract labels from objects
-        label = [obj.find("name").text for obj in root.findall("object")]
+        label = next((obj.find("name").text for obj in root.findall("object")), None)
 
         return label

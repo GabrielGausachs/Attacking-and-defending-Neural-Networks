@@ -72,5 +72,10 @@ def I_FGM_attack(model, image, label, criterion, epsilon, alpha, num_iter):
 
         # Re-zero the gradients after each update
         image_adv.grad.zero_()
+    
+    output = model(image_adv)
+    pred_label = output.argmax(dim=1).item()
+    logger.info(f"Label predicted after attacking: {pred_label}, Loss: {loss.item():.4f}")
 
-    return image_adv
+
+    return image_adv, pred_label

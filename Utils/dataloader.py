@@ -6,6 +6,7 @@ from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 from Utils.logger import initialize_logger, get_logger
 from Utils.dataset import CustomDataset
+from torchvision import transforms
 
 from Utils.config import (
     IMAGE_PATH,
@@ -40,7 +41,11 @@ class CustomDataloader:
         logger.info("-" * 50)
         logger.info('Creating dataset...')
 
-        dataset = CustomDataset(self.images_path,self.labels_path)
+        transform = transforms.Compose([
+        transforms.ToTensor()          
+        ])
+
+        dataset = CustomDataset(self.images_path,self.labels_path,transform)
 
         # Create DataLoader
         logger.info("-" * 50)
