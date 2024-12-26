@@ -62,7 +62,11 @@ if __name__ == "__main__":
         criterion = criterion[CRITERION]
 
         for i, (image, label) in enumerate(val_loader):
-            print(label)
+
+            logger.info(f"Label: {label}")
+
+            # Log image size
+            logger.info(f"Image size: {image.size()}")  
 
             if ATTACK_NAME == 'ifgsm':
                 logger.info("Attacking using I-FGSM")

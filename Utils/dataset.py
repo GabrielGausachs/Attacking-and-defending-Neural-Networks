@@ -14,11 +14,17 @@ class CustomDataset(Dataset):
     def __init__(self,images_path,labels_path,transform=None):
 
         self.images_dir = images_path
-        self.labels_dir = labels_path
+        self.labels_file = labels_path
         self.transform = transform
 
         self.image_files = sorted(os.listdir(images_path))
-        self.label_files = sorted(os.listdir(labels_path))
+
+        # Load labels from the .txt file
+        with open(self.labels_file, 'r') as f:
+            self.labels = [int(line.strip()) for line in f]
+
+        if len(self.image_files) != len(self.labels):
+            raise ValueError("Number of images and labels do not match!")
 
     def __len__(self):
         return len(self.image_files)
@@ -29,22 +35,11 @@ class CustomDataset(Dataset):
         image = Image.open(image_path)
 
         # Load label
-        label_path = os.path.join(self.labels_dir, self.label_files[index])
-        label = self.get_label_from_xml(label_path)
+        label = self.labels[index]
+        label_tensor = torch.tensor(label, dtype=torch.long)
 
         # Transform the image if it is necessary
         if self.transform:
             image = self.transform(image)
 
-        return image,label
-
-    def get_label_from_xml(self,xml_file):
-        #Parses an XML file to extract the label(s).
-
-        tree = ET.parse(xml_file)
-        root = tree.getroot()
-
-        # Extract labels from objects
-        label = next((obj.find("name").text for obj in root.findall("object")), None)
-
-        return label
+        return image,label_tensor

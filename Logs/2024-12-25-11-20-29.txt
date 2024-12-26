@@ -1,9 +1,0 @@
-2024-12-25 11:20:29,797 - root - INFO -> Logger initialized in filename 2024-12-25-11-20-29
-2024-12-25 11:20:29,797 - root - INFO -> --------------------------------------------------
-2024-12-25 11:20:29,797 - root - INFO -> Executing main
-2024-12-25 11:20:30,032 - root - INFO -> --------------------------------------------------
-2024-12-25 11:20:30,032 - root - INFO -> Model loaded
-2024-12-25 11:20:30,033 - root - INFO -> --------------------------------------------------
-2024-12-25 11:20:30,033 - root - INFO -> Reading the data from c:\Users\g4a4b\OneDrive - University of Twente\MasterCS\Deep Learning\ILSVRC2012_img_val...
-2024-12-25 11:20:30,033 - root - INFO -> --------------------------------------------------
-2024-12-25 11:20:30,033 - root - INFO -> Creating dataset...
