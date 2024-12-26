@@ -31,8 +31,8 @@ LABEL_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file
 BATCH_SIZE_ATTACK = 1
 NUM_WORKERS = 2
 IMAGES_TO_TEST = 1
-EPSILON = 7.65
-STEPSIZE = 2.55
+EPSILON = 0.03
+STEPSIZE = 0.005
 NUM_ITERATIONS = 10
 
 

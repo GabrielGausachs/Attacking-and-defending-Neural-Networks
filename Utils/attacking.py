@@ -41,6 +41,8 @@ def I_FGM_attack(model, image, label, criterion, epsilon, alpha, num_iter):
     # Create a copy of the image to modify during the attack
     image_adv = image.clone().detach().requires_grad_(True)
 
+    image_adv.retain_grad()
+
     # Iterating to apply perturbation
     for t in range(num_iter):
 
@@ -60,18 +62,14 @@ def I_FGM_attack(model, image, label, criterion, epsilon, alpha, num_iter):
 
         # Get the sign of the gradients
         grad_sign = image_adv.grad.sign()
-
-        with torch.no_grad():
-            # Apply the perturbation: update the image
-            image_adv = image_adv + alpha * grad_sign
-            # Clip the perturbation to ensure it's within the allowed epsilon ball
-            perturbation = torch.clamp(image_adv - image, min=-epsilon, max=epsilon)
-            image_adv = torch.clamp(image + perturbation, 0, 1)
+        # Apply the perturbation: update the image
+        image_adv = image_adv + alpha * grad_sign
+        # Clip the perturbation to ensure it's within the allowed epsilon ball
+        perturbation = torch.clamp(image_adv - image, min=-epsilon, max=epsilon)
+        image_adv = torch.clamp(image + perturbation, 0, 1)
 
         logger.info(f"Updated adversarial image with perturbation norm: {perturbation.norm().item():.4f}")
 
-        # Re-enable gradients for the updated adversarial image
-        image_adv.requires_grad = True
         # Re-zero the gradients after each update
         image_adv.grad.zero_()
     
