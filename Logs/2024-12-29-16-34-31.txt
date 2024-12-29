@@ -1,0 +1,86 @@
+2024-12-29 16:34:31,465 - root - INFO -> Logger initialized in filename 2024-12-29-16-34-31
+2024-12-29 16:34:31,465 - root - INFO -> --------------------------------------------------
+2024-12-29 16:34:31,465 - root - INFO -> Executing main
+2024-12-29 16:34:31,632 - root - INFO -> --------------------------------------------------
+2024-12-29 16:34:31,632 - root - INFO -> Model loaded
+2024-12-29 16:34:31,632 - root - INFO -> --------------------------------------------------
+2024-12-29 16:34:31,632 - root - INFO -> Reading the data from c:\Users\g4a4b\OneDrive - University of Twente\MasterCS\Deep Learning\ILSVRC2012_img_val...
+2024-12-29 16:34:31,632 - root - INFO -> --------------------------------------------------
+2024-12-29 16:34:31,632 - root - INFO -> Creating dataset...
+2024-12-29 16:34:31,798 - root - INFO -> --------------------------------------------------
+2024-12-29 16:34:31,798 - root - INFO -> Creating dataloader...
+2024-12-29 16:34:31,799 - root - INFO -> Val loader info: {'Number of samples': 50000, 'Batch size': 1, 'Number of batches': 50000}
+2024-12-29 16:34:31,799 - root - INFO -> --------------------------------------------------
+2024-12-29 16:34:31,799 - root - INFO -> Data loaded
+2024-12-29 16:34:31,799 - root - INFO -> --------------------------------------------------
+2024-12-29 16:34:31,799 - root - INFO -> Start attacking
+2024-12-29 16:34:38,374 - root - INFO -> Label: tensor([505])
+2024-12-29 16:34:38,374 - root - INFO -> Image size: torch.Size([1, 3, 224, 224])
+2024-12-29 16:34:38,374 - root - INFO -> Attacking using I-FGSM
+2024-12-29 16:34:38,374 - root - INFO -> epsilon: 0.03, stepsize: 0.005, num_iter: 10
+2024-12-29 16:34:38,374 - root - INFO -> Iteration 1/10
+2024-12-29 16:34:38,407 - root - INFO -> Current predicted label: 589, Loss: 12.2470
+2024-12-29 16:34:38,468 - root - INFO -> Updated adversarial image with perturbation norm: 1.9400
+2024-12-29 16:34:38,468 - root - INFO -> Iteration 2/10
+2024-12-29 16:34:38,500 - root - INFO -> Current predicted label: 443, Loss: 7.8127
+2024-12-29 16:34:38,549 - root - INFO -> Updated adversarial image with perturbation norm: 10.3737
+2024-12-29 16:34:38,549 - root - INFO -> Iteration 3/10
+2024-12-29 16:34:38,578 - root - INFO -> Current predicted label: 813, Loss: 9.2364
+2024-12-29 16:34:38,626 - root - INFO -> Updated adversarial image with perturbation norm: 10.4574
+2024-12-29 16:34:38,626 - root - INFO -> Iteration 4/10
+2024-12-29 16:34:38,641 - root - INFO -> Current predicted label: 813, Loss: 10.4402
+2024-12-29 16:34:38,688 - root - INFO -> Updated adversarial image with perturbation norm: 10.5637
+2024-12-29 16:34:38,688 - root - INFO -> Iteration 5/10
+2024-12-29 16:34:38,728 - root - INFO -> Current predicted label: 813, Loss: 11.5921
+2024-12-29 16:34:38,767 - root - INFO -> Updated adversarial image with perturbation norm: 10.6821
+2024-12-29 16:34:38,767 - root - INFO -> Iteration 6/10
+2024-12-29 16:34:38,798 - root - INFO -> Current predicted label: 813, Loss: 12.7576
+2024-12-29 16:34:38,830 - root - INFO -> Updated adversarial image with perturbation norm: 10.8223
+2024-12-29 16:34:38,830 - root - INFO -> Iteration 7/10
+2024-12-29 16:34:38,861 - root - INFO -> Current predicted label: 813, Loss: 13.9864
+2024-12-29 16:34:38,908 - root - INFO -> Updated adversarial image with perturbation norm: 10.8994
+2024-12-29 16:34:38,908 - root - INFO -> Iteration 8/10
+2024-12-29 16:34:38,924 - root - INFO -> Current predicted label: 752, Loss: 14.9893
+2024-12-29 16:34:38,971 - root - INFO -> Updated adversarial image with perturbation norm: 10.9999
+2024-12-29 16:34:38,971 - root - INFO -> Iteration 9/10
+2024-12-29 16:34:38,986 - root - INFO -> Current predicted label: 752, Loss: 16.2470
+2024-12-29 16:34:39,034 - root - INFO -> Updated adversarial image with perturbation norm: 11.0228
+2024-12-29 16:34:39,034 - root - INFO -> Iteration 10/10
+2024-12-29 16:34:39,049 - root - INFO -> Current predicted label: 752, Loss: 17.1872
+2024-12-29 16:34:39,096 - root - INFO -> Updated adversarial image with perturbation norm: 11.0780
+2024-12-29 16:34:39,128 - root - INFO -> Label predicted after attacking: 752, Loss: 17.1872
+2024-12-29 16:34:59,055 - root - INFO -> Label: tensor([92])
+2024-12-29 16:34:59,055 - root - INFO -> Image size: torch.Size([1, 3, 224, 224])
+2024-12-29 16:34:59,055 - root - INFO -> Attacking using I-FGSM
+2024-12-29 16:34:59,055 - root - INFO -> epsilon: 0.03, stepsize: 0.005, num_iter: 10
+2024-12-29 16:34:59,056 - root - INFO -> Iteration 1/10
+2024-12-29 16:34:59,088 - root - INFO -> Current predicted label: 382, Loss: 15.7670
+2024-12-29 16:34:59,131 - root - INFO -> Updated adversarial image with perturbation norm: 1.9400
+2024-12-29 16:34:59,131 - root - INFO -> Iteration 2/10
+2024-12-29 16:34:59,146 - root - INFO -> Current predicted label: 9, Loss: 9.3328
+2024-12-29 16:34:59,194 - root - INFO -> Updated adversarial image with perturbation norm: 9.1840
+2024-12-29 16:34:59,194 - root - INFO -> Iteration 3/10
+2024-12-29 16:34:59,210 - root - INFO -> Current predicted label: 9, Loss: 13.6179
+2024-12-29 16:34:59,241 - root - INFO -> Updated adversarial image with perturbation norm: 9.3427
+2024-12-29 16:34:59,241 - root - INFO -> Iteration 4/10
+2024-12-29 16:34:59,274 - root - INFO -> Current predicted label: 9, Loss: 17.8464
+2024-12-29 16:34:59,305 - root - INFO -> Updated adversarial image with perturbation norm: 9.5017
+2024-12-29 16:34:59,305 - root - INFO -> Iteration 5/10
+2024-12-29 16:34:59,321 - root - INFO -> Current predicted label: 9, Loss: 25.5717
+2024-12-29 16:34:59,369 - root - INFO -> Updated adversarial image with perturbation norm: 9.6807
+2024-12-29 16:34:59,369 - root - INFO -> Iteration 6/10
+2024-12-29 16:34:59,387 - root - INFO -> Current predicted label: 9, Loss: 33.6071
+2024-12-29 16:34:59,433 - root - INFO -> Updated adversarial image with perturbation norm: 9.8979
+2024-12-29 16:34:59,433 - root - INFO -> Iteration 7/10
+2024-12-29 16:34:59,457 - root - INFO -> Current predicted label: 9, Loss: 40.2856
+2024-12-29 16:34:59,494 - root - INFO -> Updated adversarial image with perturbation norm: 10.0142
+2024-12-29 16:34:59,494 - root - INFO -> Iteration 8/10
+2024-12-29 16:34:59,512 - root - INFO -> Current predicted label: 9, Loss: 43.4709
+2024-12-29 16:34:59,542 - root - INFO -> Updated adversarial image with perturbation norm: 10.1549
+2024-12-29 16:34:59,542 - root - INFO -> Iteration 9/10
+2024-12-29 16:34:59,573 - root - INFO -> Current predicted label: 9, Loss: 45.6953
+2024-12-29 16:34:59,619 - root - INFO -> Updated adversarial image with perturbation norm: 10.2114
+2024-12-29 16:34:59,619 - root - INFO -> Iteration 10/10
+2024-12-29 16:34:59,637 - root - INFO -> Current predicted label: 9, Loss: 48.3216
+2024-12-29 16:34:59,685 - root - INFO -> Updated adversarial image with perturbation norm: 10.3011
+2024-12-29 16:34:59,706 - root - INFO -> Label predicted after attacking: 9, Loss: 48.3216

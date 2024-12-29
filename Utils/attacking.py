@@ -70,8 +70,10 @@ def I_FGM_attack(model, image, label, criterion, epsilon, alpha, num_iter):
 
         logger.info(f"Updated adversarial image with perturbation norm: {perturbation.norm().item():.4f}")
 
-        # Re-zero the gradients after each update
-        image_adv.grad.zero_()
+        # Reinitialize gradients
+        image_adv = image_adv.detach().requires_grad_(True)
+        image_adv.retain_grad()
+        
     
     output = model(image_adv)
     pred_label = output.argmax(dim=1).item()
