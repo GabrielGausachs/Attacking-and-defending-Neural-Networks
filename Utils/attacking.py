@@ -79,7 +79,5 @@ def I_FGM_attack(model, image, label, criterion, epsilon, alpha, num_iter):
     pred_label = output.argmax(dim=1).item()
     logger.info("-" * 50)
     logger.info(f"Label predicted after attacking: {pred_label}, Loss: {loss.item():.4f}")
-    logger.info("-" * 50)
-
-
+    
     return image_adv, pred_label
