@@ -62,5 +62,7 @@ def plot_images(original_image, adversarial_image, original_label, predicted_lab
     # Display the images
     plt.tight_layout()
     plt.savefig(save_path_figure, bbox_inches='tight')
+    logger.info("-" * 50)
     logger.info(f"Saved figure to {save_path_figure}")
+    logger.info("-" * 50)
     plt.show()

@@ -57,6 +57,7 @@ if __name__ == "__main__":
         # Attacking
         logger.info("-" * 50)
         logger.info("Start attacking")
+        logger.info("-" * 50)
 
         # Create a criterion object
         criterion = criterion[CRITERION]
@@ -69,8 +70,10 @@ if __name__ == "__main__":
             logger.info(f"Image size: {image.size()}")  
 
             if ATTACK_NAME == 'ifgsm':
+                logger.info("-" * 50)
                 logger.info("Attacking using I-FGSM")
                 logger.info(f"epsilon: {EPSILON}, stepsize: {STEPSIZE}, num_iter: {NUM_ITERATIONS}")
+                logger.info("-" * 50)
                 # Attacking with I-FGSM
                 adversial_image, pred_label = attacking.I_FGM_attack(model,image,label,criterion,EPSILON,STEPSIZE,NUM_ITERATIONS)
                 visualize.plot_images(image,adversial_image,label,pred_label)
