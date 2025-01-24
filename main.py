@@ -64,7 +64,7 @@ if __name__ == "__main__":
 
         for i, (image, label) in enumerate(val_loader):
 
-            logger.info(f"Label: {label}")
+            logger.info(f"Label: {label.item()}")
 
             # Log image size
             logger.info(f"Image size: {image.size()}")  
@@ -76,7 +76,7 @@ if __name__ == "__main__":
                 logger.info("-" * 50)
                 # Attacking with I-FGSM
                 adversial_image, pred_label = attacking.I_FGM_attack(model,image,label,criterion,EPSILON,STEPSIZE,NUM_ITERATIONS)
-                visualize.plot_images(image,adversial_image,label,pred_label)
+                visualize.plot_images(image,adversial_image,label.item(),pred_label)
 
             if i >= IMAGES_TO_TEST:
                 break
