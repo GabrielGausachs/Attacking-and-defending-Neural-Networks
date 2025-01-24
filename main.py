@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 from torchvision import models
+import matplotlib.pyplot as plt
 
 
 from Utils import (
@@ -77,7 +78,6 @@ if __name__ == "__main__":
                 # Attacking with I-FGSM
                 adversial_image, pred_label = attacking.I_FGM_attack(model,image,label,criterion,EPSILON,STEPSIZE,NUM_ITERATIONS)
                 visualize.plot_images(image,adversial_image,label.item(),pred_label)
-
             if i >= IMAGES_TO_TEST:
                 break
         

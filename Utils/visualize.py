@@ -40,6 +40,8 @@ def plot_images(original_image, adversarial_image, original_label, predicted_lab
     original_image = original_image.clip(0, 1)
     adversarial_image = adversarial_image.clip(0, 1)
 
+    plt.imsave(f"ad_{original_label}.png", adversarial_image)
+
     # Path to save the figure
     current_date = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     save_path_figure = f"{RESULTS_PATH}/{current_date}_label_{original_label}.png"
