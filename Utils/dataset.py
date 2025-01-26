@@ -21,7 +21,14 @@ class CustomDataset(Dataset):
 
         # Load labels from the .txt file
         with open(self.labels_file, 'r') as f:
-            self.labels = [int(line.strip()) for line in f]
+            self.labels = [int(line.strip()) - 1 for line in f] # making labels 0-indexed
+
+        self.classes = sorted(list(set(self.labels)))
+
+        if 0 in self.classes:
+            print("Label 0 exists in self.classes.")
+        else:
+            print("Label 0 does NOT exist in self.classes.")
 
         if len(self.image_files) != len(self.labels):
             raise ValueError("Number of images and labels do not match!")

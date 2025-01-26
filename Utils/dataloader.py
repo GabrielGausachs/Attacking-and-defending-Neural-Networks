@@ -50,6 +50,7 @@ class CustomDataloader:
         ])
 
         dataset = CustomDataset(self.images_path,self.labels_path,transform)
+        print("Number of classes:", len(dataset.classes))
 
         # Create DataLoader
         logger.info("-" * 50)
