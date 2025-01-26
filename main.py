@@ -98,7 +98,7 @@ if __name__ == "__main__":
                 #visualize.plot_images(image,adversial_image,label.item(),pred_label)
                 image_count = utils.save_adversial_images(adversial_image,label,pred_label,ADV_PATH,metadata_file,image_count)
 
-            if i >= IMAGES_TO_TEST:
+            if image_count >= IMAGES_TO_TEST:
                 logger.info("Reached 15,000 images. Stopping attack.")
                 break
         
