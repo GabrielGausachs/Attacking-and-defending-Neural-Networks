@@ -11,6 +11,7 @@ logger = get_logger()
 def save_adversial_images(adversial_images, labels, pred_labels, output_folder,metadata_file, image_count):
                 
     # Convert adversarial image tensor to PIL image and save it
+    print(adversial_images.size(0))
     for idx in range(adversial_images.size(0)):  # Handle batch of images
         single_image = adversial_images[idx]  # Extract one image
         single_image = single_image.squeeze(0)  # Remove batch dimension if needed

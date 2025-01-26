@@ -34,6 +34,10 @@ class CustomDataset(Dataset):
         image_path = os.path.join(self.images_dir, self.image_files[index])
         image = Image.open(image_path)
 
+        # Convert images that are grayscale to RGB
+        if image.mode != 'RGB':
+            image = image.convert('RGB')
+
         # Load label
         label = self.labels[index]
         label_tensor = torch.tensor(label, dtype=torch.long)
