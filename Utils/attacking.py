@@ -19,7 +19,7 @@ logger = get_logger()
 def I_FGM_attack(model, image, label, criterion, epsilon, alpha, num_iter):
     
     """
-    Perform the Iterative FGSM (I-FGSM) attack on a single image.
+    Perform the Iterative FGSM (I-FGSM) attack
 
     :param model: The neural network model
     :param image: The original input image tensor
@@ -51,8 +51,8 @@ def I_FGM_attack(model, image, label, criterion, epsilon, alpha, num_iter):
         output = model(image_adv)
         loss = criterion(output, label)
 
-        pred_label = output.argmax(dim=1).item()
-        logger.info(f"Current predicted label: {pred_label}, Loss: {loss.item():.4f}")
+        pred_label = output.argmax(dim=1)
+        #logger.info(f"Current predicted label: {pred_label}, Loss: {loss.item():.4f}")
 
         # Zero all previous gradients
         model.zero_grad()
@@ -76,7 +76,7 @@ def I_FGM_attack(model, image, label, criterion, epsilon, alpha, num_iter):
         
     
     output = model(image_adv)
-    pred_label = output.argmax(dim=1).item()
+    pred_label = output.argmax(dim=1)
     logger.info("-" * 50)
     logger.info(f"Label predicted after attacking: {pred_label}, Loss: {loss.item():.4f}")
     
