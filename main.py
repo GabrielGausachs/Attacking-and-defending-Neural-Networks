@@ -96,8 +96,7 @@ if __name__ == "__main__":
                 # Attacking with I-FGSM
                 adversial_image, pred_label = attacking.I_FGM_attack(model,image,label,criterion,EPSILON,STEPSIZE,NUM_ITERATIONS)
                 #visualize.plot_images(image,adversial_image,label.item(),pred_label)
-                print(adversial_image.size(0))
-                #image_count = utils.save_adversial_images(adversial_image,label,pred_label,ADV_PATH,metadata_file,image_count)
+                image_count = utils.save_adversial_images(adversial_image,label,pred_label,ADV_PATH,metadata_file,image_count)
 
             if i >= IMAGES_TO_TEST:
                 logger.info("Reached 15,000 images. Stopping attack.")

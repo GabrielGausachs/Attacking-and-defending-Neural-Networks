@@ -33,4 +33,4 @@ def save_adversial_images(adversial_images, labels, pred_labels, output_folder,m
                     
         image_count += 1
 
-        return image_count
+    return image_count
