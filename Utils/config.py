@@ -7,13 +7,14 @@ import torch
 
 MODELNAME = 'resnet18'
 CRITERION = 'CrossEntropyLoss'
+OPTIMIZER = "Adam"
 
 # -----------------------------------------
 # Main steps
 # -----------------------------------------
 
-DO_ATTACK = True
-DO_DEFENSE = False
+DO_ATTACK = False
+DO_DEFENSE = True
 ATTACK_NAME = "ifgsm"
 
 # -----------------------------------------
@@ -37,6 +38,8 @@ IMAGES_TO_TEST = 15000
 EPSILON = 0.03
 STEPSIZE = 0.005
 NUM_ITERATIONS = 10
+LEARNING_RATE = 0.01
+EPOCHS = 25
 
 
 DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")

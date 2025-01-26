@@ -68,8 +68,10 @@ class CustomAdvDataset(Dataset):
 
         # Get the labels
         self.image_labels = []
+        self.predicted_labels = []
         for _,row in self.labels_df.iterrows():
             self.image_labels.append(int(row['True_Label']))
+            self.predicted_labels.append(int(row['Predicted_Label']))
             
 
         # Get list of image files
@@ -96,8 +98,12 @@ class CustomAdvDataset(Dataset):
         label = self.image_labels[index]
         label_tensor = torch.tensor(label, dtype=torch.long)
 
+        # Load predicted label
+        pred_label = self.predicted_labels[index]
+        pred_label_tensor = torch.tensor(pred_label, dtype=torch.long)
+
         # Transform the image if it is necessary
         if self.transform:
             image = self.transform(image)
 
-        return image, label_tensor
+        return image, label_tensor, pred_label_tensor

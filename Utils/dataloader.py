@@ -3,7 +3,7 @@ import os
 import torch
 import tarfile
 from torchvision import datasets, transforms
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, random_split
 from Utils.logger import initialize_logger, get_logger
 from Utils.dataset import CustomDataset, CustomAdvDataset
 from torchvision import transforms
@@ -101,21 +101,37 @@ class CustomDataloader:
 
         dataset = CustomAdvDataset(self.images_adv,transform)
 
-        # Create DataLoader
-        logger.info("-" * 50)
-        logger.info('Creating dataloader...')
-        dataloader = DataLoader(dataset, batch_size=BATCH_SIZE_UNET, shuffle=True, num_workers=NUM_WORKERS)
+        # Split dataset into train (80%) and validation (20%) subsets
+        train_size = int(0.8 * len(dataset))
+        val_size = len(dataset) - train_size
+        train_dataset, val_dataset = random_split(dataset, [train_size, val_size])
 
-        # Gather info about Dataloader
+        logger.info(f"Dataset split: {train_size} samples for training, {val_size} samples for validation.")
+
+        # Create DataLoaders for train and validation datasets
+        logger.info("-" * 50)
+        logger.info('Creating dataloaders...')
+        
+        train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE_UNET, shuffle=True, num_workers=NUM_WORKERS)
+        val_dataloader = DataLoader(val_dataset, batch_size=BATCH_SIZE_UNET, shuffle=False, num_workers=NUM_WORKERS)
+
+        # Gather info about DataLoaders
         dataloader_info = {
-            'Number of samples': len(dataloader.dataset),
-            'Batch size': dataloader.batch_size,
-            'Number of batches': len(dataloader)
+            'Train loader': {
+                'Number of samples': len(train_dataloader.dataset),
+                'Batch size': train_dataloader.batch_size,
+                'Number of batches': len(train_dataloader),
+            },
+            'Validation loader': {
+                'Number of samples': len(val_dataloader.dataset),
+                'Batch size': val_dataloader.batch_size,
+                'Number of batches': len(val_dataloader),
+            }
         }
 
-        logger.info(f"Val loader info: {dataloader_info}")
+        logger.info(f"Loader info: {dataloader_info}")
 
-        return dataloader
+        return train_dataloader, val_dataloader
 
 
 
