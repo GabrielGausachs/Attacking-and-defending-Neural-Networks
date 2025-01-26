@@ -101,6 +101,18 @@ if __name__ == "__main__":
             if image_count >= IMAGES_TO_TEST:
                 logger.info("Reached 15,000 images. Stopping attack.")
                 break
+
+    if DO_DEFENSE == True:
+        # Attacking
+        logger.info("-" * 50)
+        logger.info("Start defending")
+        logger.info("-" * 50)
+
+        # Reading adversial images
+
+        # Training UNet
+
+
         
 
 

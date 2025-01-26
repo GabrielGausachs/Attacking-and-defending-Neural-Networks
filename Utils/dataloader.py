@@ -5,7 +5,7 @@ import tarfile
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 from Utils.logger import initialize_logger, get_logger
-from Utils.dataset import CustomDataset
+from Utils.dataset import CustomDataset, CustomAdvDataset
 from torchvision import transforms
 
 from Utils.config import (
@@ -13,6 +13,8 @@ from Utils.config import (
     BATCH_SIZE_ATTACK,
     NUM_WORKERS,
     LABEL_PATH,
+    BATCH_SIZE_UNET,
+    ADV_PATH,
 )
 
 
@@ -23,9 +25,11 @@ class CustomDataloader:
     def __init__(self):
 
         self.batch_size_attack = BATCH_SIZE_ATTACK
+        self.batch_unet = BATCH_SIZE_UNET
         self.num_workers = NUM_WORKERS
         self.images_path = IMAGE_PATH
         self.labels_path = LABEL_PATH
+        self.images_adv = ADV_PATH
 
 
     def create_dataloaders(self):
@@ -77,6 +81,41 @@ class CustomDataloader:
             tar.extractall(path=os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))),"ILSVRC2012_img_val"))
             logger.info(f"Extracted {self.images_path} to {os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))),"ILSVRC2012_img_val")}")
         self.images_path = IMAGE_PATH
+    
+    def dataloader_adv(self):
+
+        logger.info("-" * 50)
+        logger.info(f'Reading the data from {self.images_adv}...')
+
+        # Create dataset
+        logger.info("-" * 50)
+        logger.info('Creating adv dataset...')
+
+        transform = transforms.Compose([
+            transforms.Resize(256),                       
+            transforms.CenterCrop(224),                  
+            transforms.ToTensor(),                        
+            transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                                std=[0.229, 0.224, 0.225]),
+        ])
+
+        dataset = CustomAdvDataset(self.images_adv,transform)
+
+        # Create DataLoader
+        logger.info("-" * 50)
+        logger.info('Creating dataloader...')
+        dataloader = DataLoader(dataset, batch_size=BATCH_SIZE_UNET, shuffle=True, num_workers=NUM_WORKERS)
+
+        # Gather info about Dataloader
+        dataloader_info = {
+            'Number of samples': len(dataloader.dataset),
+            'Batch size': dataloader.batch_size,
+            'Number of batches': len(dataloader)
+        }
+
+        logger.info(f"Val loader info: {dataloader_info}")
+
+        return dataloader
 
 
 
