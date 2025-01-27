@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import os
 import csv
 from PIL import Image 
+import pandas as pd
 
 
 from Utils import (
@@ -76,12 +77,16 @@ if __name__ == "__main__":
     logger.info(f"Adversarial images will be saved in: {ADV_PATH}")
 
     # Create metadata file to save the labels
-    metadata_file = os.path.join(ADV_PATH, "metadata.csv")
+    metadata_file = os.path.join(ADV_PATH, "metadata.xlsx")
 
-    # Write the headers of the new file
-    with open(metadata_file, mode="w", newline="") as file:
-        writer = csv.writer(file)
-        writer.writerow(["Image_Name", "True_Label", "Predicted_Label"])
+    data = {
+    "Image_Name": [],
+    "True_Label": [],
+    "Predicted_Label": []
+    }
+
+    # Create a DataFrame
+    df = pd.DataFrame(data)
 
 
     if DO_ATTACK == True:
@@ -108,10 +113,12 @@ if __name__ == "__main__":
                 # Attacking with I-FGSM
                 adversial_image, pred_label = attacking.I_FGM_attack(model,image,label,criterion,EPSILON,STEPSIZE,NUM_ITERATIONS)
                 #visualize.plot_images(image,adversial_image,label.item(),pred_label)
-                image_count = utils.save_adversial_images(adversial_image,label,pred_label,ADV_PATH,metadata_file,image_count)
+                image_count,df = utils.save_adversial_images(adversial_image,label,pred_label,ADV_PATH,df,image_count)
 
             if image_count >= IMAGES_TO_TEST:
                 logger.info("Reached 15,000 images. Stopping attack.")
+                df.to_excel(metadata_file, index=False)
+                logger.info("Metadata saved in Excel File")
                 break
 
     if DO_DEFENSE == True:
@@ -126,12 +133,12 @@ if __name__ == "__main__":
         logger.info("Adversial data loaded")
 
         # Training DUNet
-        Dunet = UNet.DUNET(3,1)
+        Dunet = UNet.DUNET(3,3)
 
         # Create an optimizer object
         optimizer = optimizers[OPTIMIZER](model.parameters(), lr=LEARNING_RATE)
 
-        # Create a criterion object  # I HAVE TO CHANGE THIS
+        # Create a criterion object
         criterion = criterion[CRITERION]
 
         logger.info("-" * 50)

@@ -13,8 +13,8 @@ OPTIMIZER = "Adam"
 # Main steps
 # -----------------------------------------
 
-DO_ATTACK = True
-DO_DEFENSE = False
+DO_ATTACK = False
+DO_DEFENSE = True
 ATTACK_NAME = "ifgsm"
 
 # -----------------------------------------

@@ -8,7 +8,7 @@ logger = get_logger()
 
 # Python file with functions 
 
-def save_adversial_images(adversial_images, labels, pred_labels, output_folder,metadata_file, image_count):
+def save_adversial_images(adversial_images, labels, pred_labels, output_folder,df, image_count):
                 
     # Convert adversarial image tensor to PIL image and save it
     print(adversial_images.size(0))
@@ -27,10 +27,9 @@ def save_adversial_images(adversial_images, labels, pred_labels, output_folder,m
         pil_image.save(image_path) # Save as PNG
         logger.info(f"Saved adversarial image to: {image_path}")
 
-        with open(metadata_file, mode="a", newline="") as file:
-            writer = csv.writer(file)
-            writer.writerow([image_name, single_label, single_pred])
+        new_row = {"Image_Name": image_name, "True_Label": single_label, "Predicted_Label": single_pred}
+        df = df.append(new_row, ignore_index=True)
                     
         image_count += 1
 
-    return image_count
+    return image_count,df
