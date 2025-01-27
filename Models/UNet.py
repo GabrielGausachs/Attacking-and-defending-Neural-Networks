@@ -76,7 +76,7 @@ class DUNET(nn.Module):
         skip_connections = skip_connections[::-1]
 
         for idx in range(0, len(self.ups)):
-            x = F.interpolate(x,size = skip_connections[idx].shape, mode='bilinear', align_corners=True)
+            x = F.interpolate(x,size=skip_connections[idx].size()[2:], mode='bilinear', align_corners=True)
 
             concat_skip = torch.cat((skip_connections[idx], x), dim=1)
             x = self.ups[idx](concat_skip)
