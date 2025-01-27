@@ -60,11 +60,12 @@ class CustomAdvDataset(Dataset):
     def __init__(self, adv_path, transform=None):
 
         self.adv_path = adv_path
-        self.labels_csv_path = os.path.join(adv_path, "metadata.csv")
+        self.labels_excel_path = os.path.join(adv_path, "metadata.xlsx")
         self.transform = transform
 
-        # Load labels from the CSV file
-        self.labels_df = pd.read_csv(self.labels_csv_path)
+        # Load labels from the Excel file
+        self.labels_df = pd.read_excel(self.labels_excel_path)
+
 
         # Get the labels
         self.image_labels = []
@@ -75,7 +76,8 @@ class CustomAdvDataset(Dataset):
             
 
         # Get list of image files
-        self.image_files = [f for f in os.listdir(adv_path) if os.path.isfile(os.path.join(adv_path, f))]
+        self.image_files = [f for f in os.listdir(adv_path) if os.path.isfile(os.path.join(adv_path, f)) and not f.lower().endswith('.xlsx')]
+
 
         # Ensure number of images matches number of labels
         if len(self.image_files) != len(self.image_labels):

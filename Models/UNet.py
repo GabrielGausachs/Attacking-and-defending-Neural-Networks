@@ -20,7 +20,7 @@ class C2(nn.Module):
     
 class C3(nn.Module):
     def __init__(self, in_channels, out_channels):
-        super(C2, self).__init__()
+        super(C3, self).__init__()
         self.conv = nn.Sequential(
             nn.Conv2d(in_channels, out_channels, 3, 2, 1, bias=False),
             nn.BatchNorm2d(out_channels),
@@ -54,11 +54,12 @@ class DUNET(nn.Module):
                 in_channels = feature
 
         # Up part of UNET
-        for i,feature in enumerate(reversed(features)):
+        reversed_features = list(reversed(features))
+        for i,feature in enumerate(reversed_features):
             if i == 3:
-                self.ups.append(C2(feature, features[i+1]))
+                self.ups.append(C2(feature, out_channels))
             else:
-                self.ups.append(C3(feature, feature[i+1]))
+                self.ups.append(C3(feature, reversed_features[i+1]))
         
         self.bottleneck = C3(features[-1], features[-1])
         self.final_conv = nn.Conv2d(features[0], out_channels, kernel_size=1)

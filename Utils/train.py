@@ -9,7 +9,7 @@ from Utils.config import (
 logger = get_logger()
 
 
-def train(model, target_model, loader, optimizer, criterion, metrics, epoch=0, epochs=0):
+def train(model, target_model, loader, optimizer, criterion, epoch=0, epochs=0):
     total_loss = 0
     total_metric = [0, 0, 0, 0]
     model.train()
@@ -30,6 +30,7 @@ def train(model, target_model, loader, optimizer, criterion, metrics, epoch=0, e
     for batch_idx, (adv_images, true_label, pred_label) in enumerate(loader, 1):
         adv_images = adv_images.to(DEVICE)
         true_label = true_label.to(DEVICE)
+        print(adv_images.size())
 
         optimizer.zero_grad()
         outputs = model(adv_images)

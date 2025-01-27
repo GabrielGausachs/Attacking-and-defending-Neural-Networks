@@ -67,30 +67,30 @@ if __name__ == "__main__":
     logger.info("-" * 50)
     logger.info("Model loaded")
 
-    # Load the data
-    val_loader = dataloader.CustomDataloader().create_dataloaders()
-    logger.info("-" * 50)
-    logger.info("Data loaded")
-
-    # Create folder to save adversarial images
-    os.makedirs(ADV_PATH, exist_ok=True)
-    logger.info(f"Adversarial images will be saved in: {ADV_PATH}")
-
-    # Create metadata file to save the labels
-    metadata_file = os.path.join(ADV_PATH, "metadata.xlsx")
-
-    data = {
-    "Image_Name": [],
-    "True_Label": [],
-    "Predicted_Label_Previous": [],
-    "Predicted_Label": []
-    }
-
-    # Create a DataFrame
-    df = pd.DataFrame(data)
-
 
     if DO_ATTACK == True:
+
+        # Load the data
+        val_loader = dataloader.CustomDataloader().create_dataloaders()
+        logger.info("-" * 50)
+        logger.info("Data loaded")
+
+        # Create folder to save adversarial images
+        os.makedirs(ADV_PATH, exist_ok=True)
+        logger.info(f"Adversarial images will be saved in: {ADV_PATH}")
+
+        # Create metadata file to save the labels
+        metadata_file = os.path.join(ADV_PATH, "metadata.xlsx")
+
+        data = {
+        "Image_Name": [],
+        "True_Label": [],
+        "Predicted_Label_Previous": [],
+        "Predicted_Label": []
+        }
+
+        # Create a DataFrame
+        df = pd.DataFrame(data)
         # Attacking
         logger.info("-" * 50)
         logger.info("Start attacking")
