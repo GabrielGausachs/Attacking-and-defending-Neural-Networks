@@ -8,7 +8,7 @@ logger = get_logger()
 
 # Python file with functions 
 
-def save_adversial_images(adversial_images, labels, pred_labels, output_folder, new_rows, image_count):
+def save_adversial_images(adversial_images, labels, pred_labels, pred_label_previous, output_folder, new_rows, image_count):
                 
     # Convert adversarial image tensor to PIL image and save it
     print(adversial_images.size(0))
@@ -17,6 +17,7 @@ def save_adversial_images(adversial_images, labels, pred_labels, output_folder, 
         single_image = single_image.squeeze(0)  # Remove batch dimension if needed
         single_image = single_image.cpu().detach()  # Ensure on CPU
         single_label = labels[idx].item()
+        single_pred_label_previous = pred_label_previous[idx].item()
         single_pred = pred_labels[idx].item()
         single_image = single_image.permute(1, 2, 0)  # Rearrange to [H, W, C]
         single_image = (single_image * 255).byte().numpy()  # Scale to [0, 255]
@@ -27,7 +28,7 @@ def save_adversial_images(adversial_images, labels, pred_labels, output_folder, 
         pil_image.save(image_path) # Save as PNG
         logger.info(f"Saved adversarial image to: {image_path}")
 
-        new_rows.append({"Image_Name": image_name, "True_Label": single_label, "Predicted_Label": single_pred})
+        new_rows.append({"Image_Name": image_name, "True_Label": single_label,"Predicted_Label_Previous":single_pred_label_previous, "Predicted_Label": single_pred})
                     
         image_count += 1
 

@@ -38,6 +38,11 @@ def I_FGM_attack(model, image, label, criterion, epsilon, alpha, num_iter):
     image = image.to(DEVICE)
     label = label.to(DEVICE)
 
+    # We first get the output of the model previous the attack
+    output_previous = model(image)
+
+    pred_label_previous = output_previous.argmax(dim=1)
+
     # Create a copy of the image to modify during the attack
     image_adv = image.clone().detach().requires_grad_(True)
 
@@ -79,5 +84,6 @@ def I_FGM_attack(model, image, label, criterion, epsilon, alpha, num_iter):
     pred_label = output.argmax(dim=1)
     logger.info("-" * 50)
     logger.info(f"Label predicted after attacking: {pred_label}, Loss: {loss.item():.4f}")
+    logger.info(f"Label predicted before the attack: {pred_label_previous}")
     
-    return image_adv, pred_label
+    return image_adv, pred_label, pred_label_previous

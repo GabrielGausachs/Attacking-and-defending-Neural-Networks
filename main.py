@@ -82,6 +82,7 @@ if __name__ == "__main__":
     data = {
     "Image_Name": [],
     "True_Label": [],
+    "Predicted_Label_Previous": [],
     "Predicted_Label": []
     }
 
@@ -112,9 +113,9 @@ if __name__ == "__main__":
                 logger.info(f"epsilon: {EPSILON}, stepsize: {STEPSIZE}, num_iter: {NUM_ITERATIONS}")
                 logger.info("-" * 50)
                 # Attacking with I-FGSM
-                adversial_image, pred_label = attacking.I_FGM_attack(model,image,label,criterion,EPSILON,STEPSIZE,NUM_ITERATIONS)
+                adversial_image, pred_label, pred_label_previous = attacking.I_FGM_attack(model,image,label,criterion,EPSILON,STEPSIZE,NUM_ITERATIONS)
                 #visualize.plot_images(image,adversial_image,label.item(),pred_label)
-                image_count,new_rows = utils.save_adversial_images(adversial_image,label,pred_label,ADV_PATH,new_rows,image_count)
+                image_count,new_rows = utils.save_adversial_images(adversial_image,label,pred_label,pred_label_previous,ADV_PATH,new_rows,image_count)
 
             if image_count >= IMAGES_TO_TEST:
                 logger.info("Reached 15,000 images. Stopping attack.")
