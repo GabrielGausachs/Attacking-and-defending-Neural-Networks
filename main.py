@@ -99,6 +99,7 @@ if __name__ == "__main__":
         criterion = criterion[CRITERION]
 
         image_count = 0
+        new_rows = []
 
         for i, (image, label) in enumerate(val_loader):
 
@@ -113,10 +114,13 @@ if __name__ == "__main__":
                 # Attacking with I-FGSM
                 adversial_image, pred_label = attacking.I_FGM_attack(model,image,label,criterion,EPSILON,STEPSIZE,NUM_ITERATIONS)
                 #visualize.plot_images(image,adversial_image,label.item(),pred_label)
-                image_count,df = utils.save_adversial_images(adversial_image,label,pred_label,ADV_PATH,df,image_count)
+                image_count,new_rows = utils.save_adversial_images(adversial_image,label,pred_label,ADV_PATH,new_rows,image_count)
 
             if image_count >= IMAGES_TO_TEST:
                 logger.info("Reached 15,000 images. Stopping attack.")
+                new_rows_df = pd.DataFrame(new_rows)
+                # Concatenate the new rows with the existing DataFrame
+                df = pd.concat([df, new_rows_df], ignore_index=True)
                 df.to_excel(metadata_file, index=False)
                 logger.info("Metadata saved in Excel File")
                 break
