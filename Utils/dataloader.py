@@ -12,7 +12,8 @@ from Utils.config import (
     IMAGE_PATH,
     BATCH_SIZE_ATTACK,
     NUM_WORKERS,
-    LABEL_PATH,
+    LABELS_PATH,
+    NUM_LABELS_PATH,
     BATCH_SIZE_UNET,
     ADV_PATH,
 )
@@ -28,7 +29,8 @@ class CustomDataloader:
         self.batch_unet = BATCH_SIZE_UNET
         self.num_workers = NUM_WORKERS
         self.images_path = IMAGE_PATH
-        self.labels_path = LABEL_PATH
+        self.num_labels_path = NUM_LABELS_PATH
+        self.labels_path = LABELS_PATH
         self.images_adv = ADV_PATH
 
 
@@ -53,8 +55,7 @@ class CustomDataloader:
                                 std=[0.229, 0.224, 0.225]),
         ])
 
-        dataset = CustomDataset(self.images_path,self.labels_path,transform)
-        print("Number of classes:", len(dataset.classes))
+        dataset = CustomDataset(self.images_path,self.num_labels_path,self.labels_path,transform)
 
         # Create DataLoader
         logger.info("-" * 50)

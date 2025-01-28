@@ -4,6 +4,10 @@ import csv
 
 from Utils.logger import initialize_logger, get_logger
 
+from Utils.config import (
+    LABELS_PATH,
+)
+
 logger = get_logger()
 
 # Python file with functions 
@@ -27,6 +31,8 @@ def save_adversial_images(adversial_images, labels, pred_labels, pred_label_prev
         image_path = os.path.join(output_folder, image_name)
         pil_image.save(image_path) # Save as PNG
         logger.info(f"Saved adversarial image to: {image_path}")
+
+
 
         new_rows.append({"Image_Name": image_name, "True_Label": single_label,"Predicted_Label_Previous":single_pred_label_previous, "Predicted_Label": single_pred})
                     

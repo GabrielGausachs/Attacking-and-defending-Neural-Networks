@@ -25,9 +25,10 @@ ATTACK_NAME = "ifgsm"
 
 LOG_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Logs")
 IMAGE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))),"ILSVRC2012_img_val")
-LABEL_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))),"val/ILSVRC2012_validation_ground_truth.txt")
+NUM_LABELS_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))),"ILSVRC2012_bbox_val_v3/val")
+LABELS_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Files/imagenet_class_index.json")
 RESULTS_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Results")
-ADV_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "New_adv_images")
+ADV_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "Adversarial_images")
 
 # -----------------------------------------
 # Parameters 
