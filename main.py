@@ -15,6 +15,8 @@ from Utils import (
     visualize,
     utils,
     train,
+    val,
+    savemodel
 )
 
 from Models import (
@@ -136,7 +138,7 @@ if __name__ == "__main__":
         logger.info("-" * 50)
 
         # Reading adversial images
-        train_adv_loader, val_adv_loader = dataloader.CustomDataloader().dataloader_adv()
+        train_adv_loader, val_adv_loader, test_adv_loader = dataloader.CustomDataloader().dataloader_adv()
         logger.info("-" * 50)
         logger.info("Adversial data loaded")
 
@@ -158,7 +160,7 @@ if __name__ == "__main__":
 
         for epoch in range(EPOCHS):
             logger.info(f"--- Epoch: {epoch} ---")
-            epoch_loss_train, epoch_metric_train = train.train(
+            epoch_loss_train, epoch_acc_train = train.train(
                 model=Dunet,
                 loader=train_adv_loader,
                 target_model = model,
@@ -167,6 +169,26 @@ if __name__ == "__main__":
                 epoch=epoch,
                 epochs=EPOCHS
             )
+
+            epoch_loss_val, epoch_acc_val = val.val(
+                model=Dunet,
+                loader=val_adv_loader,
+                target_model = model,
+                optimizer=optimizer,
+                criterion=criterion,
+                epoch=epoch,
+                epochs=EPOCHS
+            )
+
+        logger.info(f"Training and Evaluation finished after {EPOCHS} epochs")
+
+        # Save the model pth and the arquitecture
+	    # Load the best model weights
+        savemodel.save_model(Dunet)
+
+        logger.info("-" * 50)
+
+
 
 
 

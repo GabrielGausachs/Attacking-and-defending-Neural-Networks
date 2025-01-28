@@ -29,6 +29,7 @@ NUM_LABELS_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(_
 LABELS_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Files/imagenet_class_index.json")
 RESULTS_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Results")
 ADV_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "Adversarial_images")
+MODELS_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Models")
 
 # -----------------------------------------
 # Parameters 

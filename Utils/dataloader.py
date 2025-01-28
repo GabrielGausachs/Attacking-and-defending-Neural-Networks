@@ -90,19 +90,22 @@ class CustomDataloader:
 
         dataset = CustomAdvDataset(self.images_adv,transform)
 
-        # Split dataset into train (80%) and validation (20%) subsets
         train_size = int(0.8 * len(dataset))
-        val_size = len(dataset) - train_size
-        train_dataset, val_dataset = random_split(dataset, [train_size, val_size])
+        test_size = int(0.05 * len(dataset))
+        val_size = len(dataset) - train_size - test_size
 
-        logger.info(f"Dataset split: {train_size} samples for training, {val_size} samples for validation.")
+        # Split the dataset
+        train_dataset, val_dataset, test_dataset = random_split(dataset, [train_size, val_size, test_size])
 
-        # Create DataLoaders for train and validation datasets
+        logger.info(f"Dataset split: {train_size} samples for training, {val_size} samples for validation, {test_size} samples for testing.")
+
+        # Create DataLoaders for train, validation, and test datasets
         logger.info("-" * 50)
         logger.info('Creating dataloaders...')
-        
+
         train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE_UNET, shuffle=True, num_workers=NUM_WORKERS)
         val_dataloader = DataLoader(val_dataset, batch_size=BATCH_SIZE_UNET, shuffle=False, num_workers=NUM_WORKERS)
+        test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE_UNET, shuffle=False, num_workers=NUM_WORKERS)
 
         # Gather info about DataLoaders
         dataloader_info = {
@@ -115,12 +118,17 @@ class CustomDataloader:
                 'Number of samples': len(val_dataloader.dataset),
                 'Batch size': val_dataloader.batch_size,
                 'Number of batches': len(val_dataloader),
+            },
+            'Test loader': {
+                'Number of samples': len(test_dataloader.dataset),
+                'Batch size': test_dataloader.batch_size,
+                'Number of batches': len(test_dataloader),
             }
         }
 
         logger.info(f"Loader info: {dataloader_info}")
 
-        return train_dataloader, val_dataloader
+        return train_dataloader, val_dataloader, test_dataloader
 
 
 
