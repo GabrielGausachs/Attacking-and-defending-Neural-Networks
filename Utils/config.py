@@ -39,14 +39,14 @@ MODELS_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Models")
 # -----------------------------------------
 
 BATCH_SIZE_ATTACK = 16
-BATCH_SIZE_UNET = 32
+BATCH_SIZE_UNET = 64
 NUM_WORKERS = 0
 IMAGES_TO_TEST = 15000
 EPSILON = 0.03
 STEPSIZE = 0.005
 NUM_ITERATIONS = 10
-LEARNING_RATE = 0.01
-EPOCHS = 25
+LEARNING_RATE = 0.005
+EPOCHS = 20
 
 
 DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
