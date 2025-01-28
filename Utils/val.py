@@ -1,6 +1,5 @@
 from Utils.logger import initialize_logger, get_logger
 import torch
-import wandb
 import gc
 
 from Utils.config import (
