@@ -91,7 +91,7 @@ class CustomAdvDataset(Dataset):
         self.predicted_labels = []
         for _,row in self.labels_df.iterrows():
             self.image_labels.append(int(row['True_Label']))
-            self.predicted_labels.append(int(row['Predicted_Label']))
+            self.predicted_labels.append(int(row['Predicted_Label_Previous']))
             
 
         # Get list of image files
