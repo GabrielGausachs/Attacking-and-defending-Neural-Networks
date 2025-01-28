@@ -14,7 +14,6 @@ from Utils import (
     logger,
     dataloader,
     attacking,
-    visualize,
     utils,
     train,
     val,
@@ -47,6 +46,7 @@ from Utils.config import (
     DO_TRAIN,
     DO_TEST
 )
+from . import visualize
 
 # Criterion
 criterion = {
@@ -124,7 +124,6 @@ if __name__ == "__main__":
                 logger.info("-" * 50)
                 # Attacking with I-FGSM
                 adversial_image, pred_label, pred_label_previous = attacking.I_FGM_attack(model,image,label,criterion,EPSILON,STEPSIZE,NUM_ITERATIONS)
-                #visualize.plot_images(image,adversial_image,label.item(),pred_label)
                 image_count,new_rows = utils.save_adversial_images(adversial_image,label,pred_label,pred_label_previous,ADV_PATH,new_rows,image_count)
 
             if image_count >= IMAGES_TO_TEST:
