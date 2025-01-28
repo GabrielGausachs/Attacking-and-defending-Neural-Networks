@@ -18,7 +18,8 @@ from Utils import (
 )
 
 from Models import (
-    UNet
+    UNet,
+    UNet2
 )
 
 from Utils.config import (
@@ -38,6 +39,7 @@ from Utils.config import (
     OPTIMIZER,
     LEARNING_RATE,
     EPOCHS,
+    DEFENSE_MODEL,
 )
 
 # Criterion
@@ -51,6 +53,8 @@ optimizers = {
     "Adam": torch.optim.Adam
     }
 
+# Models
+our_models = {"DUNet": UNet.DUNET, "DUNet2": UNet2.DUNET2}
 
 if __name__ == "__main__":
 
@@ -138,7 +142,7 @@ if __name__ == "__main__":
         logger.info("Adversial data loaded")
 
         # Training DUNet
-        Dunet = UNet.DUNET(3,3)
+        Dunet = our_models[DEFENSE_MODEL](3, 3).to(DEVICE)
 
         # Create an optimizer object
         optimizer = optimizers[OPTIMIZER](model.parameters(), lr=LEARNING_RATE)
@@ -150,7 +154,7 @@ if __name__ == "__main__":
         num_params = sum(p.numel()
                          for p in model.parameters() if p.requires_grad)
         logger.info(
-            f"Starting training with DUNET that has {num_params} parameters")
+            f"Starting training with {DEFENSE_MODEL} that has {num_params} parameters")
         logger.info(f"Learning rate: {LEARNING_RATE}")
 
         for epoch in range(EPOCHS):

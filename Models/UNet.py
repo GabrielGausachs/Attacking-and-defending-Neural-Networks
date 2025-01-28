@@ -53,15 +53,20 @@ class DUNET(nn.Module):
                 self.downs.append(C3(in_channels, feature))
                 in_channels = feature
 
+        self.bottleneck = C3(features[-1], features[-1])
+
         # Up part of UNET
         reversed_features = list(reversed(features))
         for i,feature in enumerate(reversed_features):
-            if i == 3:
-                self.ups.append(C2(feature, out_channels))
+            if i == 0:
+                self.ups.append(C3(feature+feature, feature))
+            elif i == 3:
+                self.ups.append(C2(feature+reversed_features[i-1], feature))
             else:
-                self.ups.append(C3(feature, reversed_features[i+1]))
+                self.ups.append(C3(feature+reversed_features[i-1], feature))
+            
         
-        self.bottleneck = C3(features[-1], features[-1])
+        
         self.final_conv = nn.Conv2d(features[0], out_channels, kernel_size=1)
 
     def forward(self, x):

@@ -8,6 +8,8 @@ import torch
 MODELNAME = 'resnet18'
 CRITERION = 'CrossEntropyLoss'
 OPTIMIZER = "Adam"
+DEFENSE_MODEL = "DUNet"
+
 
 # -----------------------------------------
 # Main steps
