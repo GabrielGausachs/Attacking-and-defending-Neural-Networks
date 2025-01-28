@@ -4,7 +4,6 @@ import gc
 
 from Utils.config import (
     DEVICE,
-    USE_PHYSICAL_DATA,
 )
 
 logger = get_logger()
