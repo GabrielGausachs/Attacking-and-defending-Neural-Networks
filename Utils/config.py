@@ -17,7 +17,10 @@ DEFENSE_MODEL = "DUNet"
 
 DO_ATTACK = True
 DO_DEFENSE = False
+DO_TRAIN = True
+DO_TEST = False
 ATTACK_NAME = "ifgsm"
+
 
 # -----------------------------------------
 # Paths 
@@ -48,3 +51,4 @@ EPOCHS = 25
 
 DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 #DEVICE = torch.device("cpu")
+RANDOM_SEED = 23

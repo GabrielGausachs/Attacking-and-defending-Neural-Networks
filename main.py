@@ -6,6 +6,8 @@ import os
 import csv
 from PIL import Image 
 import pandas as pd
+import json
+from datetime import datetime
 
 
 from Utils import (
@@ -29,6 +31,7 @@ from Utils.config import (
     IMAGE_PATH,
     MODELNAME,
     LOG_PATH,
+    RESULTS_PATH,
     ATTACK_NAME,
     IMAGES_TO_TEST,
     CRITERION,
@@ -41,6 +44,8 @@ from Utils.config import (
     LEARNING_RATE,
     EPOCHS,
     DEFENSE_MODEL,
+    DO_TRAIN,
+    DO_TEST
 )
 
 # Criterion
@@ -142,51 +147,83 @@ if __name__ == "__main__":
         logger.info("-" * 50)
         logger.info("Adversial data loaded")
 
-        # Training DUNet
+        # DUNet
         Dunet = our_models[DEFENSE_MODEL](3, 3).to(DEVICE)
 
-        # Create an optimizer object
-        optimizer = optimizers[OPTIMIZER](model.parameters(), lr=LEARNING_RATE)
+        if DO_TRAIN == True:
 
-        # Create a criterion object
-        criterion = criterion[CRITERION]
+            # Create an optimizer object
+            optimizer = optimizers[OPTIMIZER](model.parameters(), lr=LEARNING_RATE)
 
-        logger.info("-" * 50)
-        num_params = sum(p.numel()
-                         for p in model.parameters() if p.requires_grad)
-        logger.info(
-            f"Starting training with {DEFENSE_MODEL} that has {num_params} parameters")
-        logger.info(f"Learning rate: {LEARNING_RATE}")
+            # Create a criterion object
+            criterion = criterion[CRITERION]
 
-        for epoch in range(EPOCHS):
-            logger.info(f"--- Epoch: {epoch} ---")
-            epoch_loss_train, epoch_acc_train = train.train(
-                model=Dunet,
-                loader=train_adv_loader,
-                target_model = model,
-                optimizer=optimizer,
-                criterion=criterion,
-                epoch=epoch,
-                epochs=EPOCHS
-            )
+            logger.info("-" * 50)
+            num_params = sum(p.numel()
+                            for p in model.parameters() if p.requires_grad)
+        
+            logger.info(
+                f"Starting training with {DEFENSE_MODEL} that has {num_params} parameters")
+            logger.info(f"Learning rate: {LEARNING_RATE}")
 
-            epoch_loss_val, epoch_acc_val = val.val(
-                model=Dunet,
-                loader=val_adv_loader,
-                target_model = model,
-                optimizer=optimizer,
-                criterion=criterion,
-                epoch=epoch,
-                epochs=EPOCHS
-            )
+            train_losses = []
+            train_accuracies = []
+            val_losses = []
+            val_accuracies = []
 
-        logger.info(f"Training and Evaluation finished after {EPOCHS} epochs")
+            for epoch in range(EPOCHS):
+                logger.info(f"--- Epoch: {epoch} ---")
+                epoch_loss_train, epoch_acc_train = train.train(
+                    model=Dunet,
+                    loader=train_adv_loader,
+                    target_model = model,
+                    optimizer=optimizer,
+                    criterion=criterion,
+                    epoch=epoch,
+                    epochs=EPOCHS
+                )
 
-        # Save the model pth and the arquitecture
-	    # Load the best model weights
-        savemodel.save_model(Dunet)
+                epoch_loss_val, epoch_acc_val = val.val(
+                    model=Dunet,
+                    loader=val_adv_loader,
+                    target_model = model,
+                    optimizer=optimizer,
+                    criterion=criterion,
+                    epoch=epoch,
+                    epochs=EPOCHS
+                )
 
-        logger.info("-" * 50)
+            # Save the losses and accuracies for plotting later
+            train_losses.append(epoch_loss_train)
+            train_accuracies.append(epoch_acc_train)
+            val_losses.append(epoch_loss_val)
+            val_accuracies.append(epoch_acc_val)
+
+            # Save the metrics to a JSON file
+            results = {
+                "train_losses": train_losses,
+                "train_accuracies": train_accuracies,
+                "val_losses": val_losses,
+                "val_accuracies": val_accuracies
+            }
+
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            file_name = f"{RESULTS_PATH}/metrics_{timestamp}.json"
+            with open(file_name, "w") as f:
+                json.dump(results, f)
+
+            logger.info(f"Training and Evaluation finished after {EPOCHS} epochs")
+
+            # Save the model pth and the arquitecture
+            # Load the best model weights
+            savemodel.save_model(Dunet)
+
+            logger.info("-" * 50)
+
+        if DO_TEST == True:
+            pass
+        
+            # Do the test
 
 
 

@@ -16,6 +16,7 @@ from Utils.config import (
     NUM_LABELS_PATH,
     BATCH_SIZE_UNET,
     ADV_PATH,
+    RANDOM_SEED
 )
 
 
@@ -89,6 +90,9 @@ class CustomDataloader:
         ])
 
         dataset = CustomAdvDataset(self.images_adv,transform)
+
+        
+        torch.manual_seed(RANDOM_SEED)
 
         train_size = int(0.8 * len(dataset))
         test_size = int(0.05 * len(dataset))
