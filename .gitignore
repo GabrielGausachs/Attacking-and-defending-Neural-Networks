@@ -31,3 +31,10 @@ google-services.json
 
 # Android Profiling
 *.hprof
+core.5910
+core.6763
+core.7310
+core.7374
+core.8026
+core.8154
+Utils/__pycache__/logger.cpython-38.pyc

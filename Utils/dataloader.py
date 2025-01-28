@@ -40,8 +40,6 @@ class CustomDataloader:
         logger.info(f'Reading the data from {self.images_path}...')
 
 
-        # Extract files from tar folder - Only if you have the validation folder as .tar. DO IT ONLY ONCE!
-        #self.reading_tarfiles()
 
         # Create dataset
         logger.info("-" * 50)
@@ -72,16 +70,6 @@ class CustomDataloader:
         logger.info(f"Val loader info: {dataloader_info}")
 
         return dataloader
-    
-
-    def reading_tarfiles(self):
-        logger.info("Extracting files from .tar")
-        self.images_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))),"ILSVRC2012_img_val.tar")
-        os.makedirs(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))),"ILSVRC2012_img_val"), exist_ok=True)
-        with tarfile.open(self.images_path, 'r:*') as tar:
-            tar.extractall(path=os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))),"ILSVRC2012_img_val"))
-            logger.info(f"Extracted {self.images_path} to {os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))),"ILSVRC2012_img_val")}")
-        self.images_path = IMAGE_PATH
     
     def dataloader_adv(self):
 
