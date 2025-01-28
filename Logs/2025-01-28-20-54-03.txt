@@ -1,0 +1,220 @@
+2025-01-28 20:54:03,055 - root - INFO -> Logger initialized in filename 2025-01-28-20-54-03
+2025-01-28 20:54:03,055 - root - INFO -> --------------------------------------------------
+2025-01-28 20:54:03,055 - root - INFO -> Executing main
+2025-01-28 20:54:03,265 - root - INFO -> --------------------------------------------------
+2025-01-28 20:54:03,265 - root - INFO -> Model loaded
+2025-01-28 20:54:03,265 - root - INFO -> --------------------------------------------------
+2025-01-28 20:54:03,265 - root - INFO -> Start defending
+2025-01-28 20:54:03,266 - root - INFO -> --------------------------------------------------
+2025-01-28 20:54:03,266 - root - INFO -> --------------------------------------------------
+2025-01-28 20:54:03,266 - root - INFO -> Reading the data from /home/jovyan/Desktop/Adversarial_images...
+2025-01-28 20:54:03,266 - root - INFO -> --------------------------------------------------
+2025-01-28 20:54:03,266 - root - INFO -> Creating adv dataset...
+2025-01-28 20:54:09,773 - root - INFO -> Dataset split: 12006 samples for training, 2252 samples for validation, 750 samples for testing.
+2025-01-28 20:54:09,773 - root - INFO -> --------------------------------------------------
+2025-01-28 20:54:09,773 - root - INFO -> Creating dataloaders...
+2025-01-28 20:54:09,773 - root - INFO -> Loader info: {'Train loader': {'Number of samples': 12006, 'Batch size': 32, 'Number of batches': 376}, 'Validation loader': {'Number of samples': 2252, 'Batch size': 32, 'Number of batches': 71}, 'Test loader': {'Number of samples': 750, 'Batch size': 32, 'Number of batches': 24}}
+2025-01-28 20:54:09,774 - root - INFO -> --------------------------------------------------
+2025-01-28 20:54:09,774 - root - INFO -> Adversial data loaded
+2025-01-28 20:54:09,891 - root - INFO -> --------------------------------------------------
+2025-01-28 20:54:09,891 - root - INFO -> Starting training with DUNet that has 11689512 parameters
+2025-01-28 20:54:09,891 - root - INFO -> Learning rate: 0.01
+2025-01-28 20:54:09,891 - root - INFO -> --- Epoch: 0 ---
+2025-01-28 20:54:09,893 - root - INFO -> Epoch: 0/25, Starting training...
+2025-01-28 20:54:09,949 - root - INFO -> Memory cleaned!
+2025-01-28 20:54:12,115 - root - INFO -> Batch_idx: 1 - Train loss = 7.915708
+2025-01-28 20:54:20,403 - root - INFO -> Batch_idx: 2 - Train loss = 14.869350
+2025-01-28 20:54:28,233 - root - INFO -> Batch_idx: 3 - Train loss = 17.852245
+2025-01-28 20:54:35,654 - root - INFO -> Batch_idx: 4 - Train loss = 16.142328
+2025-01-28 20:54:43,229 - root - INFO -> Batch_idx: 5 - Train loss = 12.183673
+2025-01-28 20:54:50,404 - root - INFO -> Batch_idx: 6 - Train loss = 13.876868
+2025-01-28 20:54:57,653 - root - INFO -> Batch_idx: 7 - Train loss = 13.098346
+2025-01-28 20:55:05,079 - root - INFO -> Batch_idx: 8 - Train loss = 12.153594
+2025-01-28 20:55:11,991 - root - INFO -> Batch_idx: 9 - Train loss = 12.244514
+2025-01-28 20:55:18,742 - root - INFO -> Batch_idx: 10 - Train loss = 14.657025
+2025-01-28 20:55:26,022 - root - INFO -> Batch_idx: 11 - Train loss = 12.516419
+2025-01-28 20:55:33,213 - root - INFO -> Batch_idx: 12 - Train loss = 14.789392
+2025-01-28 20:55:40,353 - root - INFO -> Batch_idx: 13 - Train loss = 12.791487
+2025-01-28 20:55:47,498 - root - INFO -> Batch_idx: 14 - Train loss = 13.858326
+2025-01-28 20:55:54,444 - root - INFO -> Batch_idx: 15 - Train loss = 10.644063
+2025-01-28 20:56:01,549 - root - INFO -> Batch_idx: 16 - Train loss = 11.440979
+2025-01-28 20:56:08,749 - root - INFO -> Batch_idx: 17 - Train loss = 10.590415
+2025-01-28 20:56:16,343 - root - INFO -> Batch_idx: 18 - Train loss = 9.936695
+2025-01-28 20:56:24,274 - root - INFO -> Batch_idx: 19 - Train loss = 11.956434
+2025-01-28 20:56:32,462 - root - INFO -> Batch_idx: 20 - Train loss = 11.541472
+2025-01-28 20:56:39,676 - root - INFO -> Batch_idx: 21 - Train loss = 9.656542
+2025-01-28 20:56:46,970 - root - INFO -> Batch_idx: 22 - Train loss = 8.521941
+2025-01-28 20:56:53,627 - root - INFO -> Batch_idx: 23 - Train loss = 9.745724
+2025-01-28 20:57:01,688 - root - INFO -> Batch_idx: 24 - Train loss = 11.199035
+2025-01-28 20:57:08,687 - root - INFO -> Batch_idx: 25 - Train loss = 10.591784
+2025-01-28 20:57:16,255 - root - INFO -> Batch_idx: 26 - Train loss = 10.460563
+2025-01-28 20:57:23,748 - root - INFO -> Batch_idx: 27 - Train loss = 10.025229
+2025-01-28 20:57:31,086 - root - INFO -> Batch_idx: 28 - Train loss = 9.200060
+2025-01-28 20:57:38,734 - root - INFO -> Batch_idx: 29 - Train loss = 8.739367
+2025-01-28 20:57:46,875 - root - INFO -> Batch_idx: 30 - Train loss = 9.714234
+2025-01-28 20:57:54,619 - root - INFO -> Batch_idx: 31 - Train loss = 8.209197
+2025-01-28 20:58:02,843 - root - INFO -> Batch_idx: 32 - Train loss = 8.834332
+2025-01-28 20:58:10,254 - root - INFO -> Batch_idx: 33 - Train loss = 8.853194
+2025-01-28 20:58:18,376 - root - INFO -> Batch_idx: 34 - Train loss = 8.125242
+2025-01-28 20:58:26,467 - root - INFO -> Batch_idx: 35 - Train loss = 8.237107
+2025-01-28 20:58:33,866 - root - INFO -> Batch_idx: 36 - Train loss = 7.996587
+2025-01-28 20:58:41,859 - root - INFO -> Batch_idx: 37 - Train loss = 7.940856
+2025-01-28 20:58:49,389 - root - INFO -> Batch_idx: 38 - Train loss = 7.732073
+2025-01-28 20:58:56,899 - root - INFO -> Batch_idx: 39 - Train loss = 9.273206
+2025-01-28 20:59:05,323 - root - INFO -> Batch_idx: 40 - Train loss = 8.497572
+2025-01-28 20:59:13,036 - root - INFO -> Batch_idx: 41 - Train loss = 7.622488
+2025-01-28 20:59:21,076 - root - INFO -> Batch_idx: 42 - Train loss = 9.984050
+2025-01-28 20:59:28,801 - root - INFO -> Batch_idx: 43 - Train loss = 7.778063
+2025-01-28 20:59:36,057 - root - INFO -> Batch_idx: 44 - Train loss = 8.030157
+2025-01-28 20:59:44,310 - root - INFO -> Batch_idx: 45 - Train loss = 8.778867
+2025-01-28 20:59:51,899 - root - INFO -> Batch_idx: 46 - Train loss = 9.136041
+2025-01-28 20:59:59,782 - root - INFO -> Batch_idx: 47 - Train loss = 8.267779
+2025-01-28 21:00:07,134 - root - INFO -> Batch_idx: 48 - Train loss = 9.681020
+2025-01-28 21:00:14,792 - root - INFO -> Batch_idx: 49 - Train loss = 8.634855
+2025-01-28 21:00:22,737 - root - INFO -> Batch_idx: 50 - Train loss = 8.061327
+2025-01-28 21:00:30,483 - root - INFO -> Batch_idx: 51 - Train loss = 8.239193
+2025-01-28 21:00:38,406 - root - INFO -> Batch_idx: 52 - Train loss = 7.073272
+2025-01-28 21:00:45,473 - root - INFO -> Batch_idx: 53 - Train loss = 7.334582
+2025-01-28 21:00:53,307 - root - INFO -> Batch_idx: 54 - Train loss = 8.633781
+2025-01-28 21:01:01,144 - root - INFO -> Batch_idx: 55 - Train loss = 7.599188
+2025-01-28 21:01:09,251 - root - INFO -> Batch_idx: 56 - Train loss = 6.929909
+2025-01-28 21:01:17,322 - root - INFO -> Batch_idx: 57 - Train loss = 7.761197
+2025-01-28 21:01:25,043 - root - INFO -> Batch_idx: 58 - Train loss = 8.120467
+2025-01-28 21:01:32,607 - root - INFO -> Batch_idx: 59 - Train loss = 7.974670
+2025-01-28 21:01:40,295 - root - INFO -> Batch_idx: 60 - Train loss = 7.065540
+2025-01-28 21:01:48,478 - root - INFO -> Batch_idx: 61 - Train loss = 7.636028
+2025-01-28 21:01:56,162 - root - INFO -> Batch_idx: 62 - Train loss = 8.052745
+2025-01-28 21:02:03,648 - root - INFO -> Batch_idx: 63 - Train loss = 7.354000
+2025-01-28 21:02:11,193 - root - INFO -> Batch_idx: 64 - Train loss = 7.592778
+2025-01-28 21:02:18,878 - root - INFO -> Batch_idx: 65 - Train loss = 7.879313
+2025-01-28 21:02:26,308 - root - INFO -> Batch_idx: 66 - Train loss = 7.450043
+2025-01-28 21:02:33,978 - root - INFO -> Batch_idx: 67 - Train loss = 6.883431
+2025-01-28 21:02:40,773 - root - INFO -> Batch_idx: 68 - Train loss = 7.024271
+2025-01-28 21:02:48,367 - root - INFO -> Batch_idx: 69 - Train loss = 7.228092
+2025-01-28 21:02:56,164 - root - INFO -> Batch_idx: 70 - Train loss = 7.136194
+2025-01-28 21:03:04,067 - root - INFO -> Batch_idx: 71 - Train loss = 8.076136
+2025-01-28 21:03:12,302 - root - INFO -> Batch_idx: 72 - Train loss = 7.625828
+2025-01-28 21:03:19,584 - root - INFO -> Batch_idx: 73 - Train loss = 7.175063
+2025-01-28 21:03:27,419 - root - INFO -> Batch_idx: 74 - Train loss = 7.160866
+2025-01-28 21:03:34,480 - root - INFO -> Batch_idx: 75 - Train loss = 7.265298
+2025-01-28 21:03:42,244 - root - INFO -> Batch_idx: 76 - Train loss = 7.196752
+2025-01-28 21:03:50,219 - root - INFO -> Batch_idx: 77 - Train loss = 7.065929
+2025-01-28 21:03:57,507 - root - INFO -> Batch_idx: 78 - Train loss = 7.219357
+2025-01-28 21:04:05,079 - root - INFO -> Batch_idx: 79 - Train loss = 7.379088
+2025-01-28 21:04:12,654 - root - INFO -> Batch_idx: 80 - Train loss = 7.022244
+2025-01-28 21:04:20,472 - root - INFO -> Batch_idx: 81 - Train loss = 7.073824
+2025-01-28 21:04:28,326 - root - INFO -> Batch_idx: 82 - Train loss = 7.076052
+2025-01-28 21:04:35,382 - root - INFO -> Batch_idx: 83 - Train loss = 7.369875
+2025-01-28 21:04:43,059 - root - INFO -> Batch_idx: 84 - Train loss = 7.003816
+2025-01-28 21:04:50,437 - root - INFO -> Batch_idx: 85 - Train loss = 7.197338
+2025-01-28 21:04:57,716 - root - INFO -> Batch_idx: 86 - Train loss = 7.208297
+2025-01-28 21:05:05,404 - root - INFO -> Batch_idx: 87 - Train loss = 7.399877
+2025-01-28 21:05:13,163 - root - INFO -> Batch_idx: 88 - Train loss = 7.108452
+2025-01-28 21:05:20,226 - root - INFO -> Batch_idx: 89 - Train loss = 7.223299
+2025-01-28 21:05:28,257 - root - INFO -> Batch_idx: 90 - Train loss = 6.926809
+2025-01-28 21:05:36,341 - root - INFO -> Batch_idx: 91 - Train loss = 7.000824
+2025-01-28 21:05:43,990 - root - INFO -> Batch_idx: 92 - Train loss = 6.919328
+2025-01-28 21:05:52,474 - root - INFO -> Batch_idx: 93 - Train loss = 7.015953
+2025-01-28 21:06:00,540 - root - INFO -> Batch_idx: 94 - Train loss = 6.953099
+2025-01-28 21:06:08,911 - root - INFO -> Batch_idx: 95 - Train loss = 6.896005
+2025-01-28 21:06:17,436 - root - INFO -> Batch_idx: 96 - Train loss = 6.952637
+2025-01-28 21:06:25,343 - root - INFO -> Batch_idx: 97 - Train loss = 7.052329
+2025-01-28 21:06:32,884 - root - INFO -> Batch_idx: 98 - Train loss = 6.984150
+2025-01-28 21:06:40,694 - root - INFO -> Batch_idx: 99 - Train loss = 6.999410
+2025-01-28 21:06:48,533 - root - INFO -> Batch_idx: 100 - Train loss = 7.063598
+2025-01-28 21:06:56,990 - root - INFO -> Batch_idx: 101 - Train loss = 7.058173
+2025-01-28 21:07:05,114 - root - INFO -> Batch_idx: 102 - Train loss = 6.913487
+2025-01-28 21:07:12,957 - root - INFO -> Batch_idx: 103 - Train loss = 6.982674
+2025-01-28 21:07:21,253 - root - INFO -> Batch_idx: 104 - Train loss = 6.937519
+2025-01-28 21:07:29,283 - root - INFO -> Batch_idx: 105 - Train loss = 6.981215
+2025-01-28 21:07:37,406 - root - INFO -> Batch_idx: 106 - Train loss = 6.989855
+2025-01-28 21:07:45,098 - root - INFO -> Batch_idx: 107 - Train loss = 6.979088
+2025-01-28 21:07:52,929 - root - INFO -> Batch_idx: 108 - Train loss = 6.941238
+2025-01-28 21:08:01,032 - root - INFO -> Batch_idx: 109 - Train loss = 6.971343
+2025-01-28 21:08:08,516 - root - INFO -> Batch_idx: 110 - Train loss = 6.924387
+2025-01-28 21:08:15,725 - root - INFO -> Batch_idx: 111 - Train loss = 6.990956
+2025-01-28 21:08:23,292 - root - INFO -> Batch_idx: 112 - Train loss = 6.945207
+2025-01-28 21:08:30,905 - root - INFO -> Batch_idx: 113 - Train loss = 6.937819
+2025-01-28 21:08:39,153 - root - INFO -> Batch_idx: 114 - Train loss = 6.904576
+2025-01-28 21:08:47,239 - root - INFO -> Batch_idx: 115 - Train loss = 6.921126
+2025-01-28 21:08:55,498 - root - INFO -> Batch_idx: 116 - Train loss = 6.992295
+2025-01-28 21:09:03,247 - root - INFO -> Batch_idx: 117 - Train loss = 6.942174
+2025-01-28 21:09:11,261 - root - INFO -> Batch_idx: 118 - Train loss = 7.068787
+2025-01-28 21:09:19,483 - root - INFO -> Batch_idx: 119 - Train loss = 6.959599
+2025-01-28 21:09:27,677 - root - INFO -> Batch_idx: 120 - Train loss = 6.984990
+2025-01-28 21:09:35,694 - root - INFO -> Batch_idx: 121 - Train loss = 6.950444
+2025-01-28 21:09:44,200 - root - INFO -> Batch_idx: 122 - Train loss = 7.003366
+2025-01-28 21:09:51,790 - root - INFO -> Batch_idx: 123 - Train loss = 6.917786
+2025-01-28 21:09:59,919 - root - INFO -> Batch_idx: 124 - Train loss = 6.998983
+2025-01-28 21:10:08,180 - root - INFO -> Batch_idx: 125 - Train loss = 7.016618
+2025-01-28 21:10:15,949 - root - INFO -> Batch_idx: 126 - Train loss = 6.988751
+2025-01-28 21:10:23,792 - root - INFO -> Batch_idx: 127 - Train loss = 6.968440
+2025-01-28 21:10:31,860 - root - INFO -> Batch_idx: 128 - Train loss = 6.914171
+2025-01-28 21:10:39,866 - root - INFO -> Batch_idx: 129 - Train loss = 6.921794
+2025-01-28 21:10:47,962 - root - INFO -> Batch_idx: 130 - Train loss = 7.005089
+2025-01-28 21:10:55,522 - root - INFO -> Batch_idx: 131 - Train loss = 6.954415
+2025-01-28 21:11:03,011 - root - INFO -> Batch_idx: 132 - Train loss = 6.883913
+2025-01-28 21:11:10,766 - root - INFO -> Batch_idx: 133 - Train loss = 6.967936
+2025-01-28 21:11:18,473 - root - INFO -> Batch_idx: 134 - Train loss = 6.898809
+2025-01-28 21:11:26,272 - root - INFO -> Batch_idx: 135 - Train loss = 6.973793
+2025-01-28 21:11:34,104 - root - INFO -> Batch_idx: 136 - Train loss = 6.925556
+2025-01-28 21:11:41,754 - root - INFO -> Batch_idx: 137 - Train loss = 6.989342
+2025-01-28 21:11:49,746 - root - INFO -> Batch_idx: 138 - Train loss = 6.848740
+2025-01-28 21:11:57,881 - root - INFO -> Batch_idx: 139 - Train loss = 6.927622
+2025-01-28 21:12:06,082 - root - INFO -> Batch_idx: 140 - Train loss = 6.953578
+2025-01-28 21:12:13,926 - root - INFO -> Batch_idx: 141 - Train loss = 6.913053
+2025-01-28 21:12:21,749 - root - INFO -> Batch_idx: 142 - Train loss = 6.999335
+2025-01-28 21:12:29,940 - root - INFO -> Batch_idx: 143 - Train loss = 6.998782
+2025-01-28 21:12:38,519 - root - INFO -> Batch_idx: 144 - Train loss = 6.894279
+2025-01-28 21:12:46,306 - root - INFO -> Batch_idx: 145 - Train loss = 6.970629
+2025-01-28 21:12:54,395 - root - INFO -> Batch_idx: 146 - Train loss = 7.000135
+2025-01-28 21:13:02,202 - root - INFO -> Batch_idx: 147 - Train loss = 6.940455
+2025-01-28 21:13:09,911 - root - INFO -> Batch_idx: 148 - Train loss = 6.963381
+2025-01-28 21:13:18,244 - root - INFO -> Batch_idx: 149 - Train loss = 6.906924
+2025-01-28 21:13:26,362 - root - INFO -> Batch_idx: 150 - Train loss = 6.895532
+2025-01-28 21:13:34,654 - root - INFO -> Batch_idx: 151 - Train loss = 6.947554
+2025-01-28 21:13:42,487 - root - INFO -> Batch_idx: 152 - Train loss = 6.937394
+2025-01-28 21:13:50,391 - root - INFO -> Batch_idx: 153 - Train loss = 6.952909
+2025-01-28 21:13:58,315 - root - INFO -> Batch_idx: 154 - Train loss = 6.933115
+2025-01-28 21:14:06,202 - root - INFO -> Batch_idx: 155 - Train loss = 6.947659
+2025-01-28 21:14:14,476 - root - INFO -> Batch_idx: 156 - Train loss = 6.961546
+2025-01-28 21:14:22,421 - root - INFO -> Batch_idx: 157 - Train loss = 6.961960
+2025-01-28 21:14:30,340 - root - INFO -> Batch_idx: 158 - Train loss = 6.998768
+2025-01-28 21:14:38,157 - root - INFO -> Batch_idx: 159 - Train loss = 6.885892
+2025-01-28 21:14:46,236 - root - INFO -> Batch_idx: 160 - Train loss = 7.018664
+2025-01-28 21:14:54,446 - root - INFO -> Batch_idx: 161 - Train loss = 6.913785
+2025-01-28 21:15:02,607 - root - INFO -> Batch_idx: 162 - Train loss = 6.980947
+2025-01-28 21:15:10,821 - root - INFO -> Batch_idx: 163 - Train loss = 6.915240
+2025-01-28 21:15:19,132 - root - INFO -> Batch_idx: 164 - Train loss = 6.977056
+2025-01-28 21:15:27,138 - root - INFO -> Batch_idx: 165 - Train loss = 6.898233
+2025-01-28 21:15:34,755 - root - INFO -> Batch_idx: 166 - Train loss = 6.979449
+2025-01-28 21:15:42,642 - root - INFO -> Batch_idx: 167 - Train loss = 6.922150
+2025-01-28 21:15:50,646 - root - INFO -> Batch_idx: 168 - Train loss = 6.929935
+2025-01-28 21:15:59,300 - root - INFO -> Batch_idx: 169 - Train loss = 6.926446
+2025-01-28 21:16:06,974 - root - INFO -> Batch_idx: 170 - Train loss = 6.937295
+2025-01-28 21:16:14,804 - root - INFO -> Batch_idx: 171 - Train loss = 6.901483
+2025-01-28 21:16:22,913 - root - INFO -> Batch_idx: 172 - Train loss = 6.905376
+2025-01-28 21:16:30,878 - root - INFO -> Batch_idx: 173 - Train loss = 6.906231
+2025-01-28 21:16:39,051 - root - INFO -> Batch_idx: 174 - Train loss = 6.907994
+2025-01-28 21:16:47,445 - root - INFO -> Batch_idx: 175 - Train loss = 6.909854
+2025-01-28 21:16:55,372 - root - INFO -> Batch_idx: 176 - Train loss = 6.921268
+2025-01-28 21:17:03,925 - root - INFO -> Batch_idx: 177 - Train loss = 6.974246
+2025-01-28 21:17:12,770 - root - INFO -> Batch_idx: 178 - Train loss = 7.007980
+2025-01-28 21:17:21,251 - root - INFO -> Batch_idx: 179 - Train loss = 6.982490
+2025-01-28 21:17:29,515 - root - INFO -> Batch_idx: 180 - Train loss = 6.962660
+2025-01-28 21:17:37,714 - root - INFO -> Batch_idx: 181 - Train loss = 6.859838
+2025-01-28 21:17:46,312 - root - INFO -> Batch_idx: 182 - Train loss = 6.979078
+2025-01-28 21:17:54,881 - root - INFO -> Batch_idx: 183 - Train loss = 6.955211
+2025-01-28 21:18:03,377 - root - INFO -> Batch_idx: 184 - Train loss = 7.004251
+2025-01-28 21:18:12,069 - root - INFO -> Batch_idx: 185 - Train loss = 7.014515
+2025-01-28 21:18:20,360 - root - INFO -> Batch_idx: 186 - Train loss = 6.912061
+2025-01-28 21:18:28,970 - root - INFO -> Batch_idx: 187 - Train loss = 6.908192
+2025-01-28 21:18:36,978 - root - INFO -> Batch_idx: 188 - Train loss = 6.937531
+2025-01-28 21:18:45,572 - root - INFO -> Batch_idx: 189 - Train loss = 6.846090
+2025-01-28 21:18:52,518 - root - INFO -> Batch_idx: 190 - Train loss = 6.887804
+2025-01-28 21:18:59,391 - root - INFO -> Batch_idx: 191 - Train loss = 6.923933
+2025-01-28 21:19:06,382 - root - INFO -> Batch_idx: 192 - Train loss = 7.020413
+2025-01-28 21:19:13,383 - root - INFO -> Batch_idx: 193 - Train loss = 6.949776
+2025-01-28 21:19:20,262 - root - INFO -> Batch_idx: 194 - Train loss = 6.867231
+2025-01-28 21:19:27,561 - root - INFO -> Batch_idx: 195 - Train loss = 6.946724
+2025-01-28 21:19:34,503 - root - INFO -> Batch_idx: 196 - Train loss = 6.932178
