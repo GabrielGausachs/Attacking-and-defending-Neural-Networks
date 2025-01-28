@@ -18,13 +18,13 @@ class CustomDataset(Dataset):
         self.labels_file = labels_path
         self.transform = transform
 
-        self.image_files = sorted(os.listdir(images_path))
+        self.image_files = os.listdir(images_path)
 
         # Load labels from the .txt file
         with open(self.labels_file, 'r') as f:
             self.labels = [int(line.strip()) - 1 for line in f] # making labels 0-indexed
 
-        self.classes = sorted(list(set(self.labels)))
+        self.classes = list(set(self.labels))
 
         if 0 in self.classes:
             print("Label 0 exists in self.classes.")

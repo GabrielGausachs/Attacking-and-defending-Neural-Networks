@@ -19,7 +19,6 @@ from Utils import (
 
 from Models import (
     UNet,
-    UNet2
 )
 
 from Utils.config import (
@@ -54,7 +53,7 @@ optimizers = {
     }
 
 # Models
-our_models = {"DUNet": UNet.DUNET, "DUNet2": UNet2.DUNET2}
+our_models = {"DUNet": UNet.DUNET}
 
 if __name__ == "__main__":
 
