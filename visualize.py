@@ -80,7 +80,7 @@ def plot_images(adversarial_image, original_label, predicted_label_previous, pre
     # Create the figure
     plt.figure(figsize=(10, 5))
 
-    plt.suptitle(f"Adversarial Attack Visualization\n(True Label: {original_label})", fontsize=16, fontweight='bold')
+    plt.suptitle(f"Adversarial Attack Visualization", fontsize=16, fontweight='bold')
     
     # Plot original image
     plt.subplot(1, 2, 1)
