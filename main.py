@@ -193,11 +193,11 @@ if __name__ == "__main__":
                     epochs=EPOCHS
                 )
 
-            # Save the losses and accuracies for plotting later
-            train_losses.append(epoch_loss_train)
-            train_accuracies.append(epoch_acc_train)
-            val_losses.append(epoch_loss_val)
-            val_accuracies.append(epoch_acc_val)
+                # Save the losses and accuracies for plotting later
+                train_losses.append(epoch_loss_train)
+                train_accuracies.append(epoch_acc_train)
+                val_losses.append(epoch_loss_val)
+                val_accuracies.append(epoch_acc_val)
 
             # Save the metrics to a JSON file
             results = {
