@@ -44,7 +44,9 @@ from Utils.config import (
     EPOCHS,
     DEFENSE_MODEL,
     DO_TRAIN,
-    DO_TEST
+    DO_TEST,
+    MODEL_SAVED_NAME,
+    MODELS_PATH,
 )
 
 # Criterion
@@ -240,7 +242,29 @@ if __name__ == "__main__":
 
 
             # Accuracy of the test set with a defense in attacked images
-            
+            logger.info("Testing with defense")
+
+            # Loading the model
+            Dunet.load_state_dict(torch.load(os.path.join(MODELS_PATH,MODEL_SAVED_NAME), map_location=DEVICE))
+            Dunet.to(DEVICE)
+            Dunet.eval()
+
+            correct = 0
+            total = 0
+
+            with torch.no_grad():  
+                for adv_img, true_labels, _, predicted_labels_attacked in test_adv_loader:
+                    adv_img, true_labels, predicted_labels_attacked = adv_img.to(DEVICE), true_labels.to(DEVICE), predicted_labels_attacked.to(DEVICE)
+
+                    # Count correct predictions
+                    outputs = Dunet(adv_img)
+                    output_target_model = resnet(outputs)
+                    _, predicted = torch.max(output_target_model.data, 1)
+                    correct += (true_labels == predicted).sum().item()
+                    total += true_labels.size(0)
+
+            accuracy = correct / total if total > 0 else 0
+            logger.info(f"Test Accuracy: {accuracy * 100:.2f}%")
 
 
 

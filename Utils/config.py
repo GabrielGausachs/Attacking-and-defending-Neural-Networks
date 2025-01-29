@@ -20,6 +20,7 @@ DO_DEFENSE = True
 DO_TRAIN = False
 DO_TEST = True
 ATTACK_NAME = "ifgsm"
+MODEL_SAVED_NAME = "DUNET_20250129182241.pth"
 
 
 # -----------------------------------------
