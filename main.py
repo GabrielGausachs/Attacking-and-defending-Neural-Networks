@@ -184,7 +184,7 @@ if __name__ == "__main__":
                 epoch_loss_val, epoch_acc_val = val.val(
                     model=Dunet,
                     loader=val_adv_loader,
-                    target_model = model,
+                    target_model = resnet,
                     optimizer=optimizer,
                     criterion=criterion,
                     epoch=epoch,
