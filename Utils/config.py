@@ -39,7 +39,7 @@ MODELS_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Models")
 # -----------------------------------------
 
 BATCH_SIZE_ATTACK = 16
-BATCH_SIZE_UNET = 64
+BATCH_SIZE_UNET = 32
 NUM_WORKERS = 0
 IMAGES_TO_TEST = 15000
 EPSILON = 0.03
