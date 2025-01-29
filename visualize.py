@@ -79,6 +79,8 @@ def plot_images(adversarial_image, original_label, predicted_label_previous, pre
     
     # Create the figure
     plt.figure(figsize=(10, 5))
+
+    plt.suptitle(f"Adversarial Attack Visualization\n(True Label: {original_label})", fontsize=16, fontweight='bold')
     
     # Plot original image
     plt.subplot(1, 2, 1)
@@ -89,7 +91,7 @@ def plot_images(adversarial_image, original_label, predicted_label_previous, pre
     # Plot adversarial image
     plt.subplot(1, 2, 2)
     plt.imshow(adversarial_image, cmap='gray' if adversarial_image.ndim == 2 else None)
-    plt.title(f"Adversarial Image\After Attacking: {predicted_label}")
+    plt.title(f"Adversarial Image\nAfter Attacking: {predicted_label}")
     plt.axis('off')
     
     # Display the images
