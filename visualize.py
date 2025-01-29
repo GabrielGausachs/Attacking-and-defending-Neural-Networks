@@ -30,8 +30,12 @@ df = pd.read_excel(excel_file)
 # Subset where Predicted_Label_Previous != Predicted_Label
 df_diff = df[df['Predicted_Label_Previous'] != df['Predicted_Label']]
 
-# Subset where Predicted_Label_Previous == Predicted_Label
-df_same = df[df['Predicted_Label_Previous'] == df['Predicted_Label']]
+# Subset where Predicted_Label_Previous == Predicted_Label and True_Label == Predicted_Label
+df_same = df[
+    (df['Predicted_Label_Previous'] == df['Predicted_Label']) & 
+    (df['True_Label'] == df['Predicted_Label'])
+]
+
 
 # Randomly select one row from each subset
 random_row_diff = df_diff.sample(n=1).iloc[0] if not df_diff.empty else None
