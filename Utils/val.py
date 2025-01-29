@@ -31,7 +31,7 @@ def val(model, target_model, loader, optimizer, criterion, epoch=0, epochs=0):
             optimizer.zero_grad()
             outputs = model(adv_images)
             output_target_model = target_model(outputs)
-            train_loss = criterion(output_target_model, pred_label)
+            train_loss = criterion(output_target_model, true_label)
             logger.info(f"Batch_idx: {batch_idx} - Validation loss = {train_loss:.6f}")
 
             total_loss += train_loss.item()
@@ -40,7 +40,7 @@ def val(model, target_model, loader, optimizer, criterion, epoch=0, epochs=0):
             # Calculate accuracy
             _, predicted = torch.max(output_target_model.data, 1)
             total += true_label.size(0)
-            correct += (predicted == pred_label).sum().item()
+            correct += (predicted == true_label).sum().item()
 
             # Free memory in each iteration
             del adv_images

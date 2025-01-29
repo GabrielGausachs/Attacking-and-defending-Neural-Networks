@@ -33,7 +33,7 @@ def train(model, target_model, loader, optimizer, criterion, epoch=0, epochs=0):
         #logger.info(f"Output DUNet: {outputs.size()}")
         output_target_model = target_model(outputs)
         #logger.info(f"Output target model: {output_target_model.size()} with value: {output_target_model}")
-        train_loss = criterion(output_target_model, pred_label)
+        train_loss = criterion(output_target_model, true_label)
         logger.info(f"Batch_idx: {batch_idx} - Train loss = {train_loss:.6f}")
 
         train_loss.backward()
@@ -44,8 +44,8 @@ def train(model, target_model, loader, optimizer, criterion, epoch=0, epochs=0):
 
         # Calculate accuracy
         _, predicted = torch.max(output_target_model.data, 1)
-        total += pred_label.size(0)
-        correct += (predicted == pred_label).sum().item()
+        total += true_label.size(0)
+        correct += (predicted == true_label).sum().item()
 
         # Free memory in each iteration
         del adv_images

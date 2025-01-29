@@ -71,8 +71,8 @@ if __name__ == "__main__":
     logger.info("Executing main")
 
     # Load pretrained Model
-    model = getattr(models, MODELNAME)(pretrained=True)
-    model.to(DEVICE)
+    resnet = getattr(models, MODELNAME)(pretrained=True)
+    resnet.to(DEVICE)
     logger.info("-" * 50)
     logger.info("Model loaded")
 
@@ -122,7 +122,7 @@ if __name__ == "__main__":
                 logger.info(f"epsilon: {EPSILON}, stepsize: {STEPSIZE}, num_iter: {NUM_ITERATIONS}")
                 logger.info("-" * 50)
                 # Attacking with I-FGSM
-                adversial_image, pred_label, pred_label_previous = attacking.I_FGM_attack(model,image,label,criterion,EPSILON,STEPSIZE,NUM_ITERATIONS)
+                adversial_image, pred_label, pred_label_previous = attacking.I_FGM_attack(resnet,image,label,criterion,EPSILON,STEPSIZE,NUM_ITERATIONS)
                 image_count,new_rows = utils.save_adversial_images(adversial_image,label,pred_label,pred_label_previous,ADV_PATH,new_rows,image_count)
 
             if image_count >= IMAGES_TO_TEST:
@@ -151,14 +151,14 @@ if __name__ == "__main__":
         if DO_TRAIN == True:
 
             # Create an optimizer object
-            optimizer = optimizers[OPTIMIZER](model.parameters(), lr=LEARNING_RATE)
+            optimizer = optimizers[OPTIMIZER](Dunet.parameters(), lr=LEARNING_RATE)
 
             # Create a criterion object
             criterion = criterion[CRITERION]
 
             logger.info("-" * 50)
             num_params = sum(p.numel()
-                            for p in model.parameters() if p.requires_grad)
+                            for p in Dunet.parameters() if p.requires_grad)
         
             logger.info(
                 f"Starting training with {DEFENSE_MODEL} that has {num_params} parameters")
@@ -174,7 +174,7 @@ if __name__ == "__main__":
                 epoch_loss_train, epoch_acc_train = train.train(
                     model=Dunet,
                     loader=train_adv_loader,
-                    target_model = model,
+                    target_model = resnet,
                     optimizer=optimizer,
                     criterion=criterion,
                     epoch=epoch,
