@@ -46,7 +46,6 @@ from Utils.config import (
     DO_TRAIN,
     DO_TEST
 )
-from . import visualize
 
 # Criterion
 criterion = {
