@@ -22,7 +22,7 @@ def train(model, target_model, loader, optimizer, criterion, epoch=0, epochs=0):
     gc.collect()  # Collect trash to free memory not used
     logger.info("Memory cleaned!")
 
-    for batch_idx, (adv_images, true_label, pred_label) in enumerate(loader, 1):
+    for batch_idx, (adv_images, true_label, pred_label,pred_label_attacked) in enumerate(loader, 1):
         adv_images = adv_images.to(DEVICE)
         true_label = true_label.to(DEVICE)
         pred_label = pred_label.to(DEVICE)

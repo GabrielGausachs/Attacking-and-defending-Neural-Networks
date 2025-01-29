@@ -219,10 +219,28 @@ if __name__ == "__main__":
             logger.info("-" * 50)
 
         if DO_TEST == True:
-            pass
-        
-            # Do the test
 
+            logger.info("Doing Tests")
+        
+            # Accuracy of the test set with attacked images
+            logger.info("Testing without defense")
+            correct = 0
+            total = 0
+
+            with torch.no_grad():  
+                for adv_img, true_labels, _, predicted_labels_attacked in test_adv_loader:
+                    adv_img, true_labels, predicted_labels_attacked = adv_img.to(DEVICE), true_labels.to(DEVICE), predicted_labels_attacked.to(DEVICE)
+
+                    # Count correct predictions
+                    correct += (true_labels == predicted_labels_attacked).sum().item()
+                    total += true_labels.size(0)
+
+            accuracy = correct / total if total > 0 else 0
+            logger.info(f"Test Accuracy: {accuracy * 100:.2f}%")
+
+
+            # Accuracy of the test set with a defense in attacked images
+            
 
 
 

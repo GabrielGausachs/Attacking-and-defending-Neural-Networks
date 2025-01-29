@@ -17,8 +17,8 @@ DEFENSE_MODEL = "DUNet"
 
 DO_ATTACK = False
 DO_DEFENSE = True
-DO_TRAIN = True
-DO_TEST = False
+DO_TRAIN = False
+DO_TEST = True
 ATTACK_NAME = "ifgsm"
 
 

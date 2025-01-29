@@ -1,0 +1,21 @@
+2025-01-30 00:39:29,047 - root - INFO -> Logger initialized in filename 2025-01-30-00-39-29
+2025-01-30 00:39:29,047 - root - INFO -> --------------------------------------------------
+2025-01-30 00:39:29,048 - root - INFO -> Executing main
+2025-01-30 00:39:31,150 - root - INFO -> --------------------------------------------------
+2025-01-30 00:39:31,150 - root - INFO -> Model loaded
+2025-01-30 00:39:31,150 - root - INFO -> --------------------------------------------------
+2025-01-30 00:39:31,150 - root - INFO -> Start defending
+2025-01-30 00:39:31,151 - root - INFO -> --------------------------------------------------
+2025-01-30 00:39:31,151 - root - INFO -> --------------------------------------------------
+2025-01-30 00:39:31,151 - root - INFO -> Reading the data from /home/jovyan/Desktop/Adversarial_images...
+2025-01-30 00:39:31,151 - root - INFO -> --------------------------------------------------
+2025-01-30 00:39:31,151 - root - INFO -> Creating adv dataset...
+2025-01-30 00:39:48,182 - root - INFO -> Dataset split: 12006 samples for training, 2252 samples for validation, 750 samples for testing.
+2025-01-30 00:39:48,182 - root - INFO -> --------------------------------------------------
+2025-01-30 00:39:48,182 - root - INFO -> Creating dataloaders...
+2025-01-30 00:39:48,183 - root - INFO -> Loader info: {'Train loader': {'Number of samples': 12006, 'Batch size': 32, 'Number of batches': 376}, 'Validation loader': {'Number of samples': 2252, 'Batch size': 32, 'Number of batches': 71}, 'Test loader': {'Number of samples': 750, 'Batch size': 32, 'Number of batches': 24}}
+2025-01-30 00:39:48,183 - root - INFO -> --------------------------------------------------
+2025-01-30 00:39:48,184 - root - INFO -> Adversial data loaded
+2025-01-30 00:39:48,364 - root - INFO -> Doing Tests
+2025-01-30 00:39:48,364 - root - INFO -> Testing without defense
+2025-01-30 00:39:54,043 - root - INFO -> Test Accuracy: 0.27%
