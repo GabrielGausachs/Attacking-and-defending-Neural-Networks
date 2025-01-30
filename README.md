@@ -16,7 +16,7 @@ To train a model, execute:
 
 `python3 main.py`
 
-In the `Utils/config.py` file you will find the training configuration, paths and parameters and whether you want to do an attack or a defense.
+In the `Utils/config.py` file you will find the training configuration, paths, parameters and whether you want to do an attack or a defense.
 
 ## Citation
 - Olga Russakovsky*, Jia Deng*, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma, Zhiheng Huang, Andrej Karpathy, Aditya Khosla, Michael Bernstein, Alexander C. Berg and Li Fei-Fei. (* = equal contribution) ImageNet Large Scale Visual Recognition Challenge. arXiv:1409.0575, 2014.
