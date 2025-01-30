@@ -8,6 +8,7 @@ import pandas as pd
 import json
 import numpy as np
 from PIL import Image
+import json
 
 
 from Utils.config import ( 
@@ -22,7 +23,7 @@ from Utils.logger import initialize_logger, get_logger
 
 logger = get_logger()
 
-
+""""
 excel_file = os.path.join(ADV_PATH, "metadata.xlsx")  
 df = pd.read_excel(excel_file)
 
@@ -40,9 +41,8 @@ df_same = df[
 # Randomly select one row from each subset
 random_row_diff = df_diff.sample(n=1).iloc[0] if not df_diff.empty else None
 random_row_same = df_same.sample(n=1).iloc[0] if not df_same.empty else None
-
+"""
     
-# Select a random row
 def get_images(random_row):
     imagename = random_row['Image_Name']
     true_label = int(random_row['True_Label'])
@@ -106,5 +106,52 @@ def plot_images(adversarial_image, original_label, predicted_label_previous, pre
     logger.info("-" * 50)
     plt.show()
 
-get_images(random_row_diff)
-get_images(random_row_same)
+#get_images(random_row_diff)
+#get_images(random_row_same)
+
+def plot_loss_acc(name_json_file):
+
+    # JSON data
+    with open(os.path.join(RESULTS_PATH,name_json_file), 'r') as file:
+        json_data = json.load(file)
+
+    # Extract values
+    epochs = list(range(1, len(json_data["train_losses"]) + 1))
+    train_losses = json_data["train_losses"]
+    val_losses = json_data["val_losses"]
+    train_accuracies = json_data["train_accuracies"]
+    val_accuracies = json_data["val_accuracies"]
+
+    current_date = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    save_path_figure = f"{RESULTS_PATH}/{current_date}_loss_acc.png"
+
+    # Create figure
+    plt.figure(figsize=(12, 5))
+
+    # Loss Plot
+    plt.subplot(1, 2, 1)
+    plt.plot(epochs, train_losses, label='Train Loss', marker='o', linestyle='-')
+    plt.plot(epochs, val_losses, label='Validation Loss', marker='s', linestyle='--')
+    plt.xlabel('Epochs')
+    plt.ylabel('Loss')
+    plt.title('Training & Validation Loss')
+    plt.legend()
+    plt.grid(True)
+
+    # Accuracy Plot
+    plt.subplot(1, 2, 2)
+    plt.plot(epochs, train_accuracies, label='Train Accuracy', marker='o', linestyle='-')
+    plt.plot(epochs, val_accuracies, label='Validation Accuracy', marker='s', linestyle='--')
+    plt.xlabel('Epochs')
+    plt.ylabel('Accuracy (%)')
+    plt.title('Training & Validation Accuracy')
+    plt.legend()
+    plt.grid(True)
+
+    # Show plots
+    plt.tight_layout()
+    plt.savefig(save_path_figure, bbox_inches='tight')
+    plt.show()
+
+
+plot_loss_acc('metrics_20250129_182241.json')
