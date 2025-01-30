@@ -136,7 +136,7 @@ def plot_loss_acc(name_json_file):
     plt.ylabel('Loss')
     plt.title('Training & Validation Loss')
     plt.legend()
-    plt.grid(True)
+    plt.grid(False)
 
     # Accuracy Plot
     plt.subplot(1, 2, 2)
@@ -146,7 +146,7 @@ def plot_loss_acc(name_json_file):
     plt.ylabel('Accuracy (%)')
     plt.title('Training & Validation Accuracy')
     plt.legend()
-    plt.grid(True)
+    plt.grid(False)
 
     # Show plots
     plt.tight_layout()
