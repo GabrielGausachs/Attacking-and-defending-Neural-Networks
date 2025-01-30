@@ -1,7 +1,5 @@
-import tarfile
 import os
 import torch
-import tarfile
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader, random_split
 from Utils.logger import initialize_logger, get_logger
