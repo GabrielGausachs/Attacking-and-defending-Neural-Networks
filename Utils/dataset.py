@@ -1,13 +1,11 @@
 from torch.utils.data import Dataset
 from Utils.logger import initialize_logger, get_logger
-import numpy as np
 import torch
 import os
 import json
 import xml.etree.ElementTree as ET
 from PIL import Image
 import xml.etree.ElementTree as ET
-import torchvision.transforms as transforms
 import pandas as pd
 
 logger = get_logger()
@@ -23,7 +21,6 @@ class CustomDataset(Dataset):
 
         self.image_files = os.listdir(images_path)
 
-        # CHANGE THIS!!
         # Load the JSON mapping file
         with open(labels_path, "r") as f:
             self.label_map = json.load(f)
@@ -32,6 +29,7 @@ class CustomDataset(Dataset):
         return len(self.image_files)
     
     def __getitem__(self, index):
+        
         # Load image
         image_path = os.path.join(self.images_dir, self.image_files[index])
         image = Image.open(image_path)
@@ -57,10 +55,11 @@ class CustomDataset(Dataset):
         return image, real_name
     
     def _parse_xml(self, xml_path):
+
         """Parse the XML file to extract the class label."""
         tree = ET.parse(xml_path)
         root = tree.getroot()
-        # Extract the <name> tag inside <object>
+        
         object_tag = root.find("object")
         if object_tag is not None:
             name_tag = object_tag.find("name")
@@ -69,6 +68,7 @@ class CustomDataset(Dataset):
         return None
     
     def _get_real_name(self, class_id):
+        
         """Map the class ID to the real name using the label map."""
         for key, value in self.label_map.items():
             if value[0] == class_id:

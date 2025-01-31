@@ -11,6 +11,7 @@ from Utils.config import (
 logger = get_logger()
 
 def save_model(model):
+    
     # Save the model pth and the arquitecture
     logger.info("Saving the model")
     model.to("cpu")

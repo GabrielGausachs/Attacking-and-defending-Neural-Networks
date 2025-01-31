@@ -1,4 +1,3 @@
-import os
 import torch
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader, random_split
@@ -45,9 +44,9 @@ class CustomDataloader:
         logger.info('Creating dataset...')
 
         transform = transforms.Compose([
-            transforms.Resize(256),                       # Resize the shorter side to 256
-            transforms.CenterCrop(224),                   # Center crop to 224x224
-            transforms.ToTensor(),                        # Convert image to tensor (from [0, 255] to [0, 1])
+            transforms.Resize(256),                       
+            transforms.CenterCrop(224),                   
+            transforms.ToTensor(),                        
             transforms.Normalize(mean=[0.485, 0.456, 0.406],  # Normalize using ImageNet's mean and std
                                 std=[0.229, 0.224, 0.225]),
         ])

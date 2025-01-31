@@ -27,9 +27,7 @@ from Models import (
 from Utils.config import (
     DO_ATTACK,
     DO_DEFENSE,
-    IMAGE_PATH,
     MODELNAME,
-    LOG_PATH,
     RESULTS_PATH,
     ATTACK_NAME,
     IMAGES_TO_TEST,
@@ -137,7 +135,7 @@ if __name__ == "__main__":
                 break
 
     if DO_DEFENSE == True:
-        # Attacking
+        # Defending
         logger.info("-" * 50)
         logger.info("Start defending")
         logger.info("-" * 50)
@@ -171,6 +169,7 @@ if __name__ == "__main__":
             val_losses = []
             val_accuracies = []
 
+            # Training and evaluating
             for epoch in range(EPOCHS):
                 logger.info(f"--- Epoch: {epoch} ---")
                 epoch_loss_train, epoch_acc_train = train.train(
@@ -215,7 +214,6 @@ if __name__ == "__main__":
             logger.info(f"Training and Evaluation finished after {EPOCHS} epochs")
 
             # Save the model pth and the arquitecture
-            # Load the best model weights
             savemodel.save_model(Dunet)
 
             logger.info("-" * 50)
@@ -233,7 +231,6 @@ if __name__ == "__main__":
                 for adv_img, true_labels, _, predicted_labels_attacked in test_adv_loader:
                     adv_img, true_labels, predicted_labels_attacked = adv_img.to(DEVICE), true_labels.to(DEVICE), predicted_labels_attacked.to(DEVICE)
 
-                    # Count correct predictions
                     correct += (true_labels == predicted_labels_attacked).sum().item()
                     total += true_labels.size(0)
 
