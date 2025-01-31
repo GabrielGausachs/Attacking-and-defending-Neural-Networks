@@ -1,7 +1,7 @@
 # Attacking-and-defending-Neural-Networks
 This repository demonstrates the implementation of adversarial attack on a pretrained neural network for a classification task, followed by the application of a defense mechanism to enhance the network’s robustness. For the attack, we use the Iterative Fast Gradient Sign Method (I-FGSM), an improvement of the Fast Gradient Sign Method (FGSM), which creates adversarial examples by making small adjustments to images. I-FGSM refines this by applying FGSM iteratively with smaller steps, making the attack stronger while keeping changes less noticeable. To defend against these attacks, we applied the Class Label Guided Denoiser (CGD), a model that reduces adversarial noise using a Denoising U- Net (DUNET) structure. The CGD uses the target model’s classification loss to guide the removal of adversarial noise, improving the model’s ability to resist adversarial interference. The goal is to evaluate the effectiveness of the defense in improving the model’s robustness against adversarial attacks.
 
-This is the Report of the project.
+This is the [Report](https://github.com/GabrielGausachs/Attacking-and-defending-Neural-Networks/blob/main/Report.pdf) of the project.
 
 ## Env Setup
 
